@@ -3,6 +3,4 @@ ipriKGD
 =======
 
 :Authors:
-    Klemen Možina,
-    Gregor Babnik,
-	Domen Pereniè
+    Klemen Možina, Gregor Babnik, Domen Pereniè
