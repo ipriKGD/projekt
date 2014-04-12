@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="myApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="myApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="myApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="myApp"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>My AngularJS App</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.4" media="screen" />
+	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+	<!--[if lt IE 7]>
+		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+	<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/">My App</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class=""><a href="">Home</a></li>
+							<li class=""><a href="">My Trades</a></li>
+							<li class=""><a href="">My Profile</a></li>
+						</ul>
+						<form class="navbar-form pull-right">
+								<a class="btn" href="login/">Sign In</a>
+								<a class="btn" href="signup/">Sign Up</a>
+						</form>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+	</div>	
+  <div class="container">
+	  <ul class="menu">
+		<li><a href="#/view1">view1</a></li>
+		<li><a href="#/view2">view2</a></li>
+	  </ul>
+
+	  <div ng-view></div>
+
+	  <div>Angular seed app: v<span app-version></span></div>
+	  <hr>
+
+		<footer>
+			<p>&copy;</p>
+		</footer>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
+</body>
+</html>
