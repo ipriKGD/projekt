@@ -1,0 +1,40 @@
+[
+	{
+		"id": 0,
+		"first_name": "Klemen",
+		"last_name": "Mozina",
+		"e-mail": "km4054@student.uni-lj.si",
+		"phone": "000000000",
+		"registered": true,
+		"username": "km4054",
+		"password": "mojegeslo",
+		"last_active": "2014-04-13T18:25:43.511Z",
+		"last_message": ""
+	},
+	{
+		"id": 1,
+		"first_name": "Test",
+		"last_name": "Test",
+		"e-mail": "test@test.si",
+		"phone": "000000001",
+		"registered": false,
+		"username": "test",
+		"password": "tttttt",
+		"last_active": "2014-04-13T18:25:43.511Z",
+		"last_message": "test"
+	},
+	{
+		"id": 2,
+		"first_name": "Test2",
+		"last_name": "Test2",
+		"e-mail": "test2@test.is",
+		"phone": "000000002",
+		"registered": true,
+		"username": "test2",
+		"password": "tttttt2",
+		"last_active": "2014-04-13T18:25:43.511Z",
+		"last_message": ""
+	}
+
+
+]

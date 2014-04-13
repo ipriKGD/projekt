@@ -1,0 +1,31 @@
+[
+
+	{
+		"id": 0,
+		"title": "Produkt1",
+		"description": "Dobra stvar.",
+		"image": "slika",
+		"price": 30.99,
+		"category": "other"
+	 
+	},
+	{
+		"id": 1,
+		"title": "Produkt2",
+		"description": "Dobra stvar.",
+		"image": "slika",
+		"price": 0.99,
+		"category": "stuff"
+	 
+	},
+	{
+		"id": 2,
+		"title": "Produkt3",
+		"description": "Dobra stvar.",
+		"image": "slika",
+		"price": 150.00,
+		"category": "computers"
+	 
+	}
+	
+]

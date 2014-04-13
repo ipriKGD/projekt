@@ -1,0 +1,23 @@
+[
+	{
+		"id": 0,
+		"user_id": 0,
+		"article_id": 0,
+		"mode": 0,
+		"expiry": "2014-04-23T18:25:43.511Z"
+	},
+	{
+		"id": 1,
+		"user_id": 0,
+		"article_id": 2,
+		"mode": 1,
+		"expiry": "2014-04-27T18:25:43.511Z"
+	},
+	{
+		"id": 2,
+		"user_id": 2,
+		"article_id": 0,
+		"mode": 2,
+		"expiry": "2014-04-29T18:25:43.511Z"
+	}
+]

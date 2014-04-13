@@ -1,0 +1,43 @@
+{
+  "User": {
+    "id": {},
+    "first_name": {},
+    "last_name": {},
+    "e-mail": {},
+    "phone": {},
+    "registered": {},
+	"username": {},
+	"password": {},
+	"last-active": {}
+  }
+}
+
+{
+  "Trade": {
+    "id": {},
+    "user_id": {},
+    "article_id": {},
+    "mode": {},
+    "expiry": {}
+  }
+}
+
+{
+  "Article": {
+    "id": {},
+    "title": {},
+    "description": {},
+    "image": {},
+    "price": {},
+    "category": {}
+  }
+}
+
+{
+  "Followings": {
+    "id": {},
+    "user_id": {},
+    "trade_id": {},
+    "active": {}
+  }
+}
