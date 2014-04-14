@@ -1,26 +1,37 @@
-<img ng-src="{{article.image}}">
+﻿<img ng-src="{{trade.article.image}}" class="phone-images">
  
-<h1>{{article.title}}</h1>
+<h1>{{trade.article.title}}</h1>
  
-<p>{{article.description}}</p>
+<p>{{trade.article.description}}</p>
  
 <ul>
 	<li>
-    	<span>Available for another:</span>
-    	<dd>{{trade.expiry - trade.created}}</dd>
+    	<!--<span>Available for another:</span>
+    	<dd>{{trade.expiry - trade.created}}</dd> -->
+		<span>Avaliable until:</span>
+		<dd>{{ trade.expiry }}</dd>
   	</li>
 	<li>
     	<span>Price:</span>
-    	<dd>{{article.price}}</dd>
+    	<dd>{{trade.article.price}}</dd>
   	</li>
  	<li>
     	<span>Category:</span>
     	<dl>
-      	<dd ng-repeat="category in article.category">{{category}}</dd>
+      	<dd ng-repeat="category in trade.article.category">{{category}}</dd>
    		</dl>
   	</li>
   	<li>
+		<!-- tu uporabi spremenljivko tradeUser.atribut_userja -->
     	<span>Posted by:</span>
-    	<dd>{{trade.user_id}}</dd>
+    	<dd>{{tradeUser.first_name}} {{tradeUser.last_name }}</dd>
+		<!-- če je trade mode == 1 ali 2, potem lahko uporabniku pošljemo mail -->
+		<dd ng-if="trade.mode == 2 || trade.mode == 1">{{ tradeUser.email }} </dd>
+		<!-- če je trade mode == 2, potem lahko uporabnika pokličemo po telefonu -->
+		<dd ng-if="trade.mode == 2"> {{ tradeUser.phone }} </dd>
+		<br />
+		<a href="#">Send message</a>
+		<!-- TODO: naredi chat -->
+		
   	</li>
 </ul>

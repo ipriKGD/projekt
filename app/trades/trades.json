@@ -1,26 +1,48 @@
-[
+﻿[
 	{
 		"id": 0,
 		"user_id": 0,
-		"article_id": 0,
+		"article": {
+			"id": 0,
+			"title": "A Storm of Swords (Song of Ice and Fire)",
+			"description": "Book: 'The third volume of Martin's beloved fantasy saga that includes 'A Game of Thrones' and 'A Clash of Kings' continues the story of the battle for control over the Seven Kingdoms, as wars rage on and alliances are made and broken.'",
+			"image": "slika",
+			"price": 10.99,
+			"category": ["other"]
+		},
 		"mode": 0,
-		"created": "2014-04-14T09:25:43.511Z"
+		"created": "2014-04-14T09:25:43.511Z",
 		"expiry": "2014-04-23T18:25:43.511Z"
 	},
 	{
 		"id": 1,
 		"user_id": 0,
-		"article_id": 2,
+		"article": {
+			"id": 2,
+			"title": "Asus LED monitor VS247HR",
+			"description": "Asus LED monitor VS247HR z dimenzijo zaslona 23,6 inches , z ločljivostjo 1920×1080, priključki D-Sub (VGA), DVI-D, HDMI, možnost stenske montaže, vidni kot znaša 170°/160°, kontrast 50000000:1 ASUS Smart Contrast Ratio, svetilnost 250 cd/m2…",
+			"image": "slika",
+			"price": 150.00,
+			"category": ["computers" ]
+		},
 		"mode": 1,
-		"created": "2014-04-13T09:25:43.511Z"
+		"created": "2014-04-13T09:25:43.511Z", 
 		"expiry": "2014-04-27T18:25:43.511Z"
 	},
 	{
 		"id": 2,
 		"user_id": 2,
-		"article_id": 0,
+		"article": {
+			"id": 1,
+			"title": "Diamondback Century 1 Road Bike (700c Wheels)",
+			"description": "Built for comfort on the roads, the Diamondback® Century 1 bike features all the technology and smooth handling of the Podium series, but with a slightly more upright geometry that puts less strain on your neck and back. The Shimano® drivetrain and FSA® Tempo Triple crankset spins smoothly through the 24 gears, operated with Shimano® dual-control shifters/brakes. Michelin® Dynamic Sport 700c tires deliver a comfortable ride.",
+			"image": "slika",
+			"price": 749.99,
+			"category": ["sport"]
+		 
+		},
 		"mode": 2,
-		"created": "2014-04-15T09:25:43.511Z"
+		"created": "2014-04-15T09:25:43.511Z",
 		"expiry": "2014-04-29T18:25:43.511Z"
 	}
 ]

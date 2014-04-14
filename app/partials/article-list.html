@@ -1,25 +1,40 @@
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row-fluid">
+		<ul class="nav nav-pills pull-right visible-desktop">
+		<li>
+			Sort by:
+			<select ng-model="order">
+			  <option value="article.title">Alphabetical</option>
+			  <option value="article.price">Lowest price</option>
+			  <option value="-article.price">Highest price</option>
+			  <option value="-created">Newest</option>
+			</select>
+		</li>
+		</ul>
      	<div class="span2">
-
-      	Search: <input ng-model="query">
-
-        Sort by:
-        <select ng-model="order">
-          <option value="title">Alphabetical</option>
-          <option value="price">Lowest price</option>
-          <option value="-price">Highest price</option>
-          <option value="created">Newest</option>
-        </select>
+			<ul class="nav nav-list">
+				Search: <input ng-model="query" placeholder="Search">
+				<li class="nav-header hidden-desktop">
+					Sort by:
+					<select ng-model="order">
+					  <option value="title">Alphabetical</option>
+					  <option value="price">Lowest price</option>
+					  <option value="-price">Highest price</option>
+					  <option value="created">Newest</option>
+					</select>
+				</li>
+			</ul>
+			<br />
       </div>
 
       <div class="span10">
 			<ul>
-    			<li ng-repeat="article in articles | filter: query | orderBy:order" class="thumbnail">
-    				  <a href="#/articles/{{article.id}}" class="thumb"><img ng-src="{{article.image}}"></a>
-      				<a href="#/articles/{{article.id}}">{{article.title}}</a>
-      				<p>{{article.description}}</p>
-      				<p>{{article.price}}</p>
+    			<li ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail">
+					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}"></a>
+      				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
+      				<p>{{trade.article.description}}</p>
+      				<p>{{trade.article.price}} €</p>
+					<p>Ustvarjen: {{ trade.created }}</p> 
     			</li>
   			</ul>
   		</div>

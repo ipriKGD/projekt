@@ -2,15 +2,15 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+var myApp = angular.module('myApp', [
   'ngRoute',
   'myApp.filters',
-  'myApp.services',
+  'socialTradeServices',
   'myApp.directives',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/articles', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl'});
-  $routeProvider.when('/articles/:articleId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl'});
-  $routeProvider.otherwise({redirectTo: '/articles'});
+  'socialTradeControllers'
+]);
+myApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl'});
+  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl'});
+  $routeProvider.otherwise({redirectTo: '/trades'});
 }]);
