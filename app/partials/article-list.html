@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+     	<div class="span2">
+
+      	Search: <input ng-model="query">
+
+        Sort by:
+        <select ng-model="order">
+          <option value="title">Alphabetical</option>
+          <option value="price">Lowest price</option>
+          <option value="-price">Highest price</option>
+          <option value="created">Newest</option>
+        </select>
+      </div>
+
+      <div class="span10">
+			<ul>
+    			<li ng-repeat="article in articles | filter: query | orderBy:order" class="thumbnail">
+    				  <a href="#/articles/{{article.id}}" class="thumb"><img ng-src="{{article.image}}"></a>
+      				<a href="#/articles/{{article.id}}">{{article.title}}</a>
+      				<p>{{article.description}}</p>
+      				<p>{{article.price}}</p>
+    			</li>
+  			</ul>
+  		</div>
+    </div>
+</div>
+

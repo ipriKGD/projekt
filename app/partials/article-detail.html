@@ -1,0 +1,26 @@
+<img ng-src="{{article.image}}">
+ 
+<h1>{{article.title}}</h1>
+ 
+<p>{{article.description}}</p>
+ 
+<ul>
+	<li>
+    	<span>Available for another:</span>
+    	<dd>{{trade.expiry - trade.created}}</dd>
+  	</li>
+	<li>
+    	<span>Price:</span>
+    	<dd>{{article.price}}</dd>
+  	</li>
+ 	<li>
+    	<span>Category:</span>
+    	<dl>
+      	<dd ng-repeat="category in article.category">{{category}}</dd>
+   		</dl>
+  	</li>
+  	<li>
+    	<span>Posted by:</span>
+    	<dd>{{trade.user_id}}</dd>
+  	</li>
+</ul>
