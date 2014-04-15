@@ -4,7 +4,7 @@
  
 <p>{{trade.article.description}}</p>
  
-<ul>
+<ul ng-if="trade.active==1">
 	<li>
     	<!--<span>Available for another:</span>
     	<dd>{{trade.expiry - trade.created}}</dd> -->
@@ -32,6 +32,7 @@
 		<br />
 		<a href="#">Send message</a>
 		<!-- TODO: naredi chat -->
-		
+		<p>hhhh{{ k}}</p>
   	</li>
 </ul>
+<p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
