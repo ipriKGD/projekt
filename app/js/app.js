@@ -7,7 +7,8 @@ var myApp = angular.module('myApp', [
   'myApp.filters',
   'socialTradeServices',
   'myApp.directives',
-  'socialTradeControllers'
+  'socialTradeControllers',
+  'socialTradeAnimations'
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl'});
