@@ -7,6 +7,7 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
   function($scope, socialTradeService) {
     $scope.trades = socialTradeService.trades.query();
     $scope.order = '-created';
+    $scope.category_show = 'all';
   }]);
 
 socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'socialTradeService',

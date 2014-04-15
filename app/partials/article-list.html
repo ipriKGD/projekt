@@ -14,27 +14,29 @@
      	<div class="span2">
 			<ul class="nav nav-list">
 				Search: <input ng-model="query" placeholder="Search">
-				<li class="nav-header hidden-desktop">
-					Sort by:
-					<select ng-model="order">
-					  <option value="title">Alphabetical</option>
-					  <option value="price">Lowest price</option>
-					  <option value="-price">Highest price</option>
-					  <option value="created">Newest</option>
+				<li class="nav-header visible-desktop">
+					Show category:
+					<select ng-model="category_show" placeholder="Category">
+					  <option value="all">All</option>
+					  <option value="art">Art</option>
+					  <option value="computers">Computers</option>
+					  <option value="fashion">Fashion</option>
+					  <option value="sport">Sport</option>
+					  <option value="other">Other</option>
 					</select>
 				</li>
 			</ul>
 			<br />
-      </div>
+      </div> 
 
       <div class="span10">
 			<ul>
-    			<li ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail">
+    			<li ng-if="trade.article.category.indexOf(category_show) > -1 || category_show === 'all' "ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail">
 					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}"></a>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
-      				<p>{{trade.article.description}}</p>
+      				<p >{{trade.article.description}}</p>
       				<p>{{trade.article.price}} €</p>
-					<p>Ustvarjen: {{ trade.created }}</p> 
+					<p>Ustvarjen: {{ trade.created | date }}</p>  
     			</li>
   			</ul>
   		</div>
