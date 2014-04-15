@@ -33,19 +33,19 @@ body {
   padding: 0;
 }
 
-.obrobe {
+.trade-listing {
   border: 1px solid lightgrey;
   border-radius: 3px;
   margin-bottom: 20px;
   padding-right: 15px;
   -moz-border-radius: 3px;
-  -moz-box-shadow: 3px 3px 3px lightgrey;
-  -webkit-box-shadow: 3px 3px 3px lightgrey;
-  box-shadow: 3px 3px 3px lightgrey;
+  -moz-box-shadow: 1px 1px 1px lightgrey;
+  -webkit-box-shadow: 1px 1px 1px lightgrey;
+  box-shadow: 1px 1px 1px lightgrey;
 }
 
 @media (min-width: 1200px) {
-  .obrobe {
+  .trade-listing {
     margin-bottom: 30px;
   }
 }

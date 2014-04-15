@@ -13,10 +13,11 @@
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/animations.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.css">
-	<link rel="stylesheet" href="css/bootstrap-theme.css">
 
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.4" media="screen" />
+	<!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
 	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
@@ -46,9 +47,9 @@
 				</div>
 			</div>
 	</div>	
-  <div class="container">
+  <div class="container view-container">
 
-	  <div ng-view></div>
+	  <div ng-view class="view-frame"></div>
 	  <hr>
 
 		<footer>
@@ -59,6 +60,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="../bower_components/jquery/jquery.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="../bower_components/angular-animate/angular-animate.js"></script>
@@ -69,6 +71,7 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="js/animations.js"></script>
   <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
 </body>
 </html>
