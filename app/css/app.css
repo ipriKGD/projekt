@@ -51,7 +51,7 @@ body {
 }
 .slika_seznam {
   float: left;
-  height: 100px;
-  width: 150px;
+  max-height: 100px;
+  max-width: 150px;
   margin: 15px;
 }
