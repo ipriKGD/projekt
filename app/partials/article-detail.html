@@ -1,4 +1,4 @@
-﻿<img ng-src="{{trade.article.image}}" class="phone-images">
+﻿<img ng-src="{{trade.article.image}}"  class="phone-images">
  
 <h1>{{trade.article.title}}</h1>
  
@@ -9,11 +9,11 @@
     	<!--<span>Available for another:</span>
     	<dd>{{trade.expiry - trade.created}}</dd> -->
 		<span>Avaliable until:</span>
-		<dd>{{ trade.expiry }}</dd>
+		<dd>{{ trade.expiry | date }}</dd>
   	</li>
 	<li>
     	<span>Price:</span>
-    	<dd>{{trade.article.price}}</dd>
+    	<dd>{{trade.article.price}} €</dd>
   	</li>
  	<li>
     	<span>Category:</span>
