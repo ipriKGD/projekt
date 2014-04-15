@@ -33,3 +33,25 @@ body {
   padding: 0;
 }
 
+.obrobe {
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding-right: 15px;
+  -moz-border-radius: 3px;
+  -moz-box-shadow: 3px 3px 3px lightgrey;
+  -webkit-box-shadow: 3px 3px 3px lightgrey;
+  box-shadow: 3px 3px 3px lightgrey;
+}
+
+@media (min-width: 1200px) {
+  .obrobe {
+    margin-bottom: 30px;
+  }
+}
+.slika_seznam {
+  float: left;
+  max-height: 100px;
+  max-width: 150px;
+  margin: 15px;
+}

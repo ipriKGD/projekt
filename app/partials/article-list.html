@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid">
     <div class="row-fluid">
-		<ul class="nav nav-pills pull-right visible-desktop">
+		<ul class="nav nav-pills pull-right ">
 		<li>
 			Sort by:
 			<select ng-model="order">
@@ -14,7 +14,7 @@
      	<div class="span2">
 			<ul class="nav nav-list">
 				Search: <input ng-model="query" placeholder="Search">
-				<li class="nav-header visible-desktop">
+				<li class="nav-header ">
 					Show category:
 					<select ng-model="category_show" placeholder="Category">
 					  <option value="all">All</option>
@@ -30,15 +30,17 @@
       </div> 
 
       <div class="span10">
+      	
 			<ul>
-    			<li ng-if="trade.article.category.indexOf(category_show) > -1 || category_show === 'all' "ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail">
-					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}"></a>
+    			<li ng-if="trade.article.category.indexOf(category_show) > -1 || category_show === 'all' "ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail obrobe">
+					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}" class="slika_seznam"></a>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description}}</p>
       				<p>{{trade.article.price}} €</p>
 					<p>Ustvarjen: {{ trade.created | date }}</p>  
     			</li>
   			</ul>
+
   		</div>
     </div>
 </div>
