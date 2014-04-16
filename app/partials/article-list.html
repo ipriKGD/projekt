@@ -33,7 +33,7 @@
       <div class="span10">
 			<ul>
     			<li ng-if="trade.active===1 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | filter: query | activeFilter | orderBy:order" class="thumbnail trade-listing">
-					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}" class="slika_seznam"></a></div>
+					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
       				<p>{{trade.article.price}} €</p>
