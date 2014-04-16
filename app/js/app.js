@@ -38,9 +38,17 @@ myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthSe
 
 // Main App controller - used for "fake" authentication
  myApp.controller('MainCtrl', ['$scope', 'AuthService', '$location', function($scope, AuthService, $location) {
+ 	
+ 	// check if user is authenticated on every page and return them
+ 	$scope.$on('$viewContentLoaded', function() {
+		
+		$scope.user = AuthService.getAuthenticatedUser();
+		
+	});
     $scope.logoutUser = function() {
         // run a logout function to your api
         AuthService.setUserAuthenticated(false);
+        AuthService.setAuthenticatedUser(null);
         $location.path('/login');
     };
 

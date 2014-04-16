@@ -9,7 +9,6 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
     $scope.trades = socialTradeService.trades.query();
     $scope.order = '-created';
     $scope.category_show = 'all';
-
     // TODO: preveri datume in avtomatsko zapri potecene trade (v backendu ali filtru)
 
   }]);

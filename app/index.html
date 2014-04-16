@@ -39,9 +39,11 @@
 							<li ng-if='isLoggedIn()' class="{active : isActive('/mytrades')}"><a href="#/mytrades">My Trades</a></li>
 							<li ng-if='isLoggedIn()' class="{active : isActive('/myprofile')}"><a href="#/myprofile">My Profile</a></li>
 						</ul>
+						
 						<form class="navbar-form pull-right">
 								<a class="btn" ng-if='!isLoggedIn()'  href="#/login">Sign In</a>
 								<a class="btn" ng-if='!isLoggedIn()'  href="#/signup">Sign Up</a>
+								<a style="float: left; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile"><small>{{user.username}}</small></a>
 								<a href="#" class="btn" ng-if='isLoggedIn()' ng-click="logoutUser()">Log Out</a>
 						</form>
 					</div><!--/.nav-collapse -->
