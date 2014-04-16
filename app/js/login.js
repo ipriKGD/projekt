@@ -23,15 +23,18 @@ angular.module('login', ['ngResource'])
         $scope.attemptLogin = function() {
             
             var loggedin = false;
+            var usr = null;
             for ( i=0; i< $scope.users.length; i++){
                 if(($scope.users[i].username == $scope.username) && ($scope.users[i].password == $scope.password)){
                     loggedin = true;
+                    usr = $scope.users[i];
                     break;
                 }
             }
             if( loggedin) {
                 $scope.error = false;
                 AuthService.setUserAuthenticated(true);
+                AuthService.setAuthenticatedUser(usr);
                 $location.path('/trades');
             } else {
                 //TODO: naredi izpis v spr. (scope)
