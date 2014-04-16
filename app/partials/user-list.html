@@ -1,0 +1,20 @@
+<!--TODO: dolociti kontroler-->
+<div class="container-fluid">
+    <div class="row-fluid">
+	Search: <input ng-model="query">
+     
+     
+    <ul class="">
+    <li ng-repeat="user in users | filter:query">
+    	<div id="{{user.id}}">
+    		<!--TODO: pravilen link -->
+	    	<a href="/profile/{{user.id}}">
+	    		<img ng-src="{{user.image}}">
+	    		<span>{{user.first_name + " " + user.last_name}}</span>
+	    	</a>
+	    </div>
+    </li>
+    </ul>
+
+	</div>      
+</div>

@@ -1,0 +1,22 @@
+
+<div ng-init="" id="ProfilePage">
+	<h1>{{user.first_name + " " + user.last_name}}</h1>
+	
+	<div >
+		<img ng-src="{{user.image}}" alt="User image">
+		<address>
+			<ul>
+				<li>Email: <a href="mailto:{{user.e-mail}}">{{user.e-mail}}</a></li>
+				<li>Phone: {{user.phone}}</li>
+			</ul>
+		</address>
+		<div id="about">
+			<p>
+				<span>About:<br></span>
+				{{user.about}}
+			</p>
+		</div>
+		<!-- seznam prijateljev-->
+		<!-- seznam stvari na prodaj-->
+	</div>
+</div>
