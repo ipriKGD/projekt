@@ -50,12 +50,33 @@ body {
   }
 }
 .slika_seznam {
-  float: left;
+  display: block;
   max-height: 100px;
   max-width: 150px;
-  margin: 15px;
+  margin: 15px auto;
 }
 .img-container {
   width: 150px;
   float:left;
+}
+img.detail {
+  float: right;
+  border: 1px solid black;
+  margin:30px;
+  max-height: 400px;
+  max-width: 400px;
+}
+.clearme {
+  clear: left;
+}
+.img-container-det {
+  width: auto;
+  max-height: 400px;
+  float:left;
+}
+.slika_detail {
+  float: right;
+  max-height: 100px;
+  max-width: 150px;
+  margin: auto;
 }

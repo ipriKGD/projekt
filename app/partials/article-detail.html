@@ -1,20 +1,25 @@
-﻿<img ng-src="{{trade.article.image}}"  class="phone-images">
- 
+<div class="img-container-det">
+  <ul class="thumbnails">
+  <li ng-repeat="img in trade.article.image">
+    <a href=""><img ng-src="{{img}}" class="slika_detail" ng-click="setImage(img)"></a>
+  </li>    
+</ul>
+</div>
+
+<img ng-src="{{mainImage}}" class="detail">
+
+<div class="container-fluid clearme">
 <h1>{{trade.article.title}}</h1>
- 
 <p>{{trade.article.description}}</p>
- 
-<ul ng-if="trade.active==1">
-	<li>
-    	<!--<span>Available for another:</span>
-    	<dd>{{trade.expiry - trade.created}}</dd> -->
+<ul>
+  <li>
 		<span>Avaliable until:</span>
 		<dd>{{ trade.expiry | date }}</dd>
-  	</li>
+  </li>
 	<li>
     	<span>Price:</span>
     	<dd>{{trade.article.price}} €</dd>
-  	</li>
+  </li>
  	<li>
     	<span>Category:</span>
     	<dl>
@@ -35,3 +40,4 @@
   	</li>
 </ul>
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
+</div>
