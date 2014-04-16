@@ -12,14 +12,8 @@
     "angular-mocks": "~1.2.15",
 	  "angular-route": "~1.2.15",
     "angular-resource": "~1.2.15",
-<<<<<<< HEAD
 	  "bootstrap": "~3.1.1",
 	  "jquery": "1.10.2",
     "angular-animate": "~1.2.15"
-=======
-	
-	"bootstrap": "~3.1.1",
-	"jquery": "1.10.2"
->>>>>>> 3645c1007a32507498c3d3de16529732d4f0e31f
   }
 }
