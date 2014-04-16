@@ -20,7 +20,7 @@
 	<!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
 	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
-<body > <!-- MainCtrl is used for login service -->
+<body ng-cloak ng-controller="MainCtrl"> <!-- MainCtrl is used for the "fake" login service -->
 	<!--[if lt IE 7]>
 		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
@@ -36,13 +36,13 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="{active : isActive('/trades')}"><a href="#/trades">Home</a></li>
-							<li  class="{active : isActive('/mytrades')}"><a href="#/mytrades">My Trades</a></li>
-							<li  class="{active : isActive('/profile')}"><a href="#/profile">My Profile</a></li>
+							<li ng-if='isLoggedIn()' class="{active : isActive('/mytrades')}"><a href="#/mytrades">My Trades</a></li>
+							<li ng-if='isLoggedIn()' class="{active : isActive('/myprofile')}"><a href="#/myprofile">My Profile</a></li>
 						</ul>
 						<form class="navbar-form pull-right">
-								<a class="btn"  href="#/login">Sign In</a>
-								<a class="btn"  href="#/signup">Sign Up</a>
-								<a href="#" class="btn" ua-logout>Log Out</a>
+								<a class="btn" ng-if='!isLoggedIn()'  href="#/login">Sign In</a>
+								<a class="btn" ng-if='!isLoggedIn()'  href="#/signup">Sign Up</a>
+								<a href="#" class="btn" ng-if='isLoggedIn()' ng-click="logoutUser()">Log Out</a>
 						</form>
 					</div><!--/.nav-collapse -->
 				</div>
@@ -75,6 +75,11 @@
   <script src="js/directives.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/iso8601.js"></script>
+  <script src="js/bootstrap-alert.js"></script>
+  <!-- fake login service -->
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+  <!-- end fake login service -->
   <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
 </body>
 </html>
