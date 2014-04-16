@@ -1,17 +1,27 @@
 <!-- TODO: lepsi prikaz (bootstrap) -->
-<form ng-submit="attemptLogin()">
-    <div class="padding">
-        <h2>Login</h2>
+<div ng-if="error" class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p>This combination of username and password does not exist</p>
+</div>
+
+<h2>Login</h2>
+
+<form ng-submit="attemptLogin()" class="login">
+    
+    <div class="control-group required">
+        <label for="input1" class="control-label">Username</label>
+        <div class="controls">
+          <input autofocus="autofocus" type="text" id="input1" ng-model="username" />
+        </div>
     </div>
-    <div class="list list-inset">
-        <label class="item item-input">
-            <span class="input-label">Email</span>
-            <input type="text" ng-model="credentials.email">
-        </label>
-        <label class="item item-input">
-            <span class="input-label">Password</span>
-            <input type="password" ng-model="credentials.password">
-        </label>
-        <button class="button button-positive button-block" type="submit">Sign In</button>
+    <div class="contorl-group required">
+        <label for="input2" class="control-label">Password</label>
+        <div class="contorls">
+          <input type="password" id="input2" ng-model="password" />
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Sign In</button>
     </div>
 </form>
+
