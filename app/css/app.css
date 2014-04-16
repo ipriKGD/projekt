@@ -55,3 +55,10 @@ body {
   width: 150px;
   margin: 15px;
 }
+img.detail {
+  float: right;
+  border: 1px solid black;
+  margin:30px;
+  max-height: 400px;
+  max-width: 400px;
+}

@@ -34,7 +34,7 @@
       	
 			<ul>
     			<li ng-if="trade.article.category.indexOf(category_show) > -1 || category_show === 'all' "ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail obrobe">
-					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image}}" class="slika_seznam"></a>
+					<a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
       				<p>{{trade.article.price}} €</p>
