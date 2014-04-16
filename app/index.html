@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<title>My AngularJS App</title>
+	<title>SocialTrade</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width"> 
 
@@ -32,7 +32,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#/trades">My App</a>
+					<a class="brand" href="#/trades">SocialTrade</a>
+					<a class="hidden-desktop" style="float: right; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile">{{user.username}}</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="{active : isActive('/trades')}"><a href="#/trades">Home</a></li>
@@ -43,7 +44,7 @@
 						<form class="navbar-form pull-right">
 								<a class="btn" ng-if='!isLoggedIn()'  href="#/login">Sign In</a>
 								<a class="btn" ng-if='!isLoggedIn()'  href="#/signup">Sign Up</a>
-								<a style="float: left; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile"><small>{{user.username}}</small></a>
+								<a class="visible-desktop" style="float: left; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile">{{user.username}}</a>
 								<a href="#" class="btn" ng-if='isLoggedIn()' ng-click="logoutUser()">Log Out</a>
 						</form>
 					</div><!--/.nav-collapse -->
