@@ -17,10 +17,15 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
 socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'socialTradeService',
   function($scope, $routeParams, socialTradeService) {
     $scope.trade = socialTradeService.trades.get({tradeId: $routeParams.tradeId}, function(trade) {
+    	$scope.mainImage = trade.article.image[0];
     	//get needed values from trade object
     	// TODO: lahko izracunamo, koliko casa je se do konca z navadno JS skripto (get elements in izracunaj)
 
     });
+    
+    $scope.setImage = function(image) {
+      $scope.mainImage = image;
+    };
 
     $scope.$watch('trade', function(oldValue, newValue) {
 		if (!newValue) {

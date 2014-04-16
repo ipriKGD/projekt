@@ -1,18 +1,17 @@
-﻿<div class="container-fluid">
-<ul class="thumbnails pull-left">
+<div class="img-container-det">
+  <ul class="thumbnails">
   <li ng-repeat="img in trade.article.image">
-    <img ng-src="{{img}}" class="slika_seznam">
+    <a href=""><img ng-src="{{img}}" class="slika_detail" ng-click="setImage(img)"></a>
   </li>    
 </ul>
+</div>
 
-<img ng-src="{{trade.article.image[0]}}" class="detail">
- </div>
+<img ng-src="{{mainImage}}" class="detail">
 
+<div class="container-fluid clearme">
+<h1>{{trade.article.title}}</h1>
+<p>{{trade.article.description}}</p>
 <ul>
-	<li>
-    <h1>{{trade.article.title}}</h1>
-    <p>{{trade.article.description}}</p>
-  </li>
   <li>
 		<span>Avaliable until:</span>
 		<dd>{{ trade.expiry | date }}</dd>
@@ -41,3 +40,4 @@
   	</li>
 </ul>
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
+</div>
