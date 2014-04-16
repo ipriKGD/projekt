@@ -11,25 +11,16 @@
 <div class="container-fluid clearme">
 <h1>{{trade.article.title}}</h1>
 <p>{{trade.article.description}}</p>
-<ul>
-  <li>
-		<span>Avaliable until:</span>
-		<dd>{{ trade.expiry | date }}</dd>
-  </li>
-	<li>
-    	<span>Price:</span>
-    	<dd>{{trade.article.price}} €</dd>
-  </li>
- 	<li>
-    	<span>Category:</span>
-    	<dl>
-      	<dd ng-repeat="category in trade.article.category">{{category}}</dd>
-   		</dl>
-  	</li>
-  	<li>
+<dl>
+  <dt>Avaliable until:</dt>
+	  <dd>{{ trade.expiry | date }}</dd>  
+	<dt>Price:</dt>
+    <dd>{{trade.article.price}} €</dd>
+ 	<dt>Category:</dt>
+    <dd ng-repeat="category in trade.article.category">{{category}}</dd>
+  <dt>Posted by:</dt>
 		<!-- tu uporabi spremenljivko tradeUser.atribut_userja -->
-    	<span>Posted by:</span>
-    	<dd>{{tradeUser.first_name}} {{tradeUser.last_name }}</dd>
+    <dd>{{tradeUser.first_name}} {{tradeUser.last_name }}</dd>
 		<!-- če je trade mode == 1 ali 2, potem lahko uporabniku pošljemo mail -->
 		<dd ng-if="trade.mode == 2 || trade.mode == 1">{{ tradeUser.email }} </dd>
 		<!-- če je trade mode == 2, potem lahko uporabnika pokličemo po telefonu -->
@@ -37,8 +28,7 @@
 		<br />
 		<a ng-if="tradeUser.online" href="#">Send message</a>
     <p ng-if="!tradeUser.online"><strong>User is not online. </strong></a>
-		<!-- TODO: naredi chat -->
-  	</li>
-</ul>
+		<!-- TODO: naredi chat -->  	
+</dl>
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
 </div>
