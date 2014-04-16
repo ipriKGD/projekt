@@ -1,0 +1,17 @@
+<!-- TODO: lepsi prikaz (bootstrap) -->
+<form ng-submit="attemptLogin()">
+    <div class="padding">
+        <h2>Login</h2>
+    </div>
+    <div class="list list-inset">
+        <label class="item item-input">
+            <span class="input-label">Email</span>
+            <input type="text" ng-model="credentials.email">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="credentials.password">
+        </label>
+        <button class="button button-positive button-block" type="submit">Sign In</button>
+    </div>
+</form>
