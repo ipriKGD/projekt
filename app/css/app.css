@@ -50,10 +50,10 @@ body {
   }
 }
 .slika_seznam {
-  float: left;
+  display: block;
   max-height: 100px;
   max-width: 150px;
-  margin: 15px;
+  margin: 15px auto;
 }
 .img-container {
   width: 150px;
