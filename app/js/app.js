@@ -55,4 +55,7 @@ myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthSe
     $scope.isLoggedIn = function() {
         return AuthService.getUserAuthenticated();
     };
+    $scope.isActive = function(url) {
+    	return url == $location.$$url;
+    };
 }]);
