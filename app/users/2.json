@@ -4,7 +4,7 @@
 	"last_name": "Test2",
 	"email": "test2@test.si",
 	"phone": "000000002",
-	"registered": true,
+	"online": true,
 	"username": "test2",
 	"password": "tttttt2",
 	"last_active": "2014-04-13T18:25:43.511Z",
