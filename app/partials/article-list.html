@@ -26,10 +26,11 @@
 					  <option value="other">Other</option>
 					</select>
 				</li>
+				<br ng-if="isLoggedIn()" />
+				<a class="btn btn-primary" ng-if="isLoggedIn()" href="#/newtrade">New Trade</a>
 			</ul>
 			<br />
       </div> 
-
       <div class="span10">
 			<ul>
     			<li ng-if="trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | filter: query | activeFilter | orderBy:order" class="thumbnail trade-listing">
