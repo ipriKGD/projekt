@@ -1,5 +1,23 @@
 <div class="container" id="MyProfile">
-	<h1>{{user.first_name + " " + user.last_name}}</h1>
+	<h3>{{user.first_name + " " + user.last_name}}</h3>
+	<hr>
+	<div >
+		<img ng-src="{{user.image}}" alt="User image" class="slika_detail">
+		<dl>
+			<dt>Username:</dt>
+				<dd>{{user.username}}</dd>
+			<dt>Email:</dt>
+				<dd><a href="mailto:{{user.email}}">{{user.email}}</a></dd>
+			<dt>Phone:</dt>
+				<dd>{{user.phone}}</dd>
+			<dt>About:</dt>
+				<dd>{{user.about}}</dd>
+			<dt>Last seen:</dt>
+				<dd>{{user.last_active | date}}</dd>
+		<!-- TODO (could have): seznam prijateljev-->
+  		</dl>
+	</div>
+	<!--<h1>{{user.first_name + " " + user.last_name}}</h1>
 	
 	<div >
 		<img ng-src="{{user.image}}" alt="User image">
@@ -15,9 +33,7 @@
 				{{user.about}}
 			</p>
 		</div>
-		<!-- TODO (could have): seznam prijateljev-->
-
-	</div>
+	</div>-->
 	<div class="form-actions">
 		<a class="btn btn-warning" href="#/editprofile">Edit profile</a>
 	</div>
