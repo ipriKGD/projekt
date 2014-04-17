@@ -27,7 +27,7 @@
 		<dd ng-if="trade.mode == 2"> {{ tradeUser.phone }} </dd>
 		<br />
 		<a ng-if="tradeUser.online && tradeUser.id != user.id" href="#">Send message</a>
-    <p ng-if="!tradeUser.online && tradeUser.id != user.id"><strong>User is not online. </strong></a>
+    <p ng-if="!tradeUser.online && tradeUser.id != user.id"><strong>User is not online. </strong></p>
 		<!-- TODO: naredi chat -->
   	</li>
     <a class="btn btn-primary" ng-if="tradeUser.id == user.id" ng-click="closeTrade(trade.id)">Close trade</a>
