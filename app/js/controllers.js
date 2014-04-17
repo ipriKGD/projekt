@@ -68,3 +68,13 @@ socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', '
     $scope.showfilter = "1";
     //TODO: izboljsano (optimizirano) bo v naslednjih fazah, ko bo REST service
   }]);
+
+socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location',
+  function($scope, socialTradeService, $location) {
+     // TODO: Create a PUT request and store new data into DB
+      $scope.editProfile = function() {
+           $location.path('myprofile');
+      };
+
+
+}]);
