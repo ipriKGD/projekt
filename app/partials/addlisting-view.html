@@ -1,0 +1,58 @@
+<div class="container">
+
+<form class="form-horizontal" name='addListingForm' method='post' action=''>
+	<fieldset>
+		<legend>Create a new listing</legend>
+		<div class="control-group">
+			<label class="control-label" for="title" autofocus>Title:</label>
+			<div class="controls">
+				<input type="text" required>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="price">Price:</label>
+			<div class="controls">
+				<input type="number" min="0" required>
+				
+				<select for="currency">
+					<option value="eur">EUR</option>
+					<option value="usd">USD</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="category">Category:</label>
+			<div class="controls">
+				<select ng-model="categoryList">
+					<option ng-repeat="category in categories">
+						{{category}}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="private">Private:</label>
+			<div class="controls">
+				<input type="checkbox" name="privateListing" value="true">
+			</div>	
+		</div>
+		<div class="control-group">
+			<!--image upload-->
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="description">Description:</label><br>
+			<div class="controls">
+				<textarea name="description" cols="50" rows="5" required>Describe your item</textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"></label>
+			<div class="controls">
+				<input type="submit" value="List item" class="btn btn-primary">
+			</div>
+		</div>
+	</fieldset>
+</form>
+	
+
+</div>
