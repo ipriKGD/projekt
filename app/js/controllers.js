@@ -19,7 +19,6 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
     $scope.trade = socialTradeService.trades.get({tradeId: $routeParams.tradeId}, function(trade) {
     	$scope.mainImage = trade.article.image[0];
     	//get needed values from trade object
-    	// TODO: lahko izracunamo, koliko casa je se do konca z navadno JS skripto (get elements in izracunaj)
 
     });
     
@@ -48,7 +47,24 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
 		});
 		
 	});
-	
-	
-  }]);
 
+
+	
+	
+}]);
+
+socialTradeControllers.controller('UserListCtrl', ['$scope', 'socialTradeService',
+  function($scope, socialTradeService) {
+    $scope.users = socialTradeService.users.query();
+    $scope.order = 'last_name';
+
+}]);
+socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'socialTradeService',
+  function($scope, $routeParams, socialTradeService) {
+    $scope.userU = socialTradeService.users.get({userId: $routeParams.userId});
+    $scope.trades = socialTradeService.trades.query();
+    $scope.order = '-created';
+    $scope.category_show = 'all';
+    $scope.showfilter = "1";
+    //TODO: izboljsano (optimizirano) bo v naslednjih fazah, ko bo REST service
+  }]);

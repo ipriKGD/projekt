@@ -22,6 +22,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", requireLogin: true });
   //$routeProvider.when('/logout',  {templateUrl: "partials/logout.html"});
   $routeProvider.when("/signup", {templateUrl: "partials/signup.html", controller: "SignUpCtrl", requireLogin: false });
+  $routeProvider.when("/users", {templateUrl: "partials/user-list.html", controller: "UserListCtrl", requireLogin: true });
+  $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", requireLogin: true });
   $routeProvider.otherwise({redirectTo: '/trades'});
 }]);
 
