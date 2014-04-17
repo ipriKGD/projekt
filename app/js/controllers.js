@@ -25,6 +25,9 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
     $scope.setImage = function(image) {
       $scope.mainImage = image;
     };
+    $scope.closeTrade = function(trade) {
+    	// TODO: PUT zahtevek za spremembo vrednosti atributa active v 0
+    }
 
     $scope.$watch('trade', function(oldValue, newValue) {
 		if (!newValue) {
