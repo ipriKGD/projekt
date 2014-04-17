@@ -28,24 +28,26 @@
     "url": "https://github.com/angular/angular-seed/issues"
   },
   "homepage": "https://github.com/angular/angular-seed",
-  "main": "app.js",
+  "main": "scripts/web-server.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
     "bower": "^1.3.2",
-    "karma": "^0.10.10",
+    "express": "^4.0.0",
     "http-server": "^0.6.1",
+    "karma": "^0.10.10",
     "karma-chrome-launcher": "^0.1.3",
     "karma-coffee-preprocessor": "^0.1.3",
     "karma-firefox-launcher": "^0.1.3",
-    "karma-jasmine": "^0.1.5",
     "karma-html2js-preprocessor": "^0.1.0",
-    "karma-requirejs": "^0.2.1",
+    "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.1",
     "karma-script-launcher": "^0.1.0",
-    "requirejs": "^2.1.11",
+    "logfmt": "^1.1.2",
     "protractor": "^0.17.0",
+    "requirejs": "^2.1.11",
     "shelljs": "^0.2.6"
   },
   "keywords": [

@@ -1,1 +1,1 @@
-web: app.js
+web: scripts/web-server.js
