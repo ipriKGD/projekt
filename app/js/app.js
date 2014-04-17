@@ -18,8 +18,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl'});
   $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl", requireLogin: false });
   $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", controller: "ArticleListCtrl", requireLogin: true });
-  $routeProvider.when('/myclosedtrades', {templateUrl: "partials/myclosedtrades.html", controller: "ArticleListCtrl", requireLogin: true });
-   $routeProvider.when('/allmytrades', {templateUrl: "partials/allmytrades.html", controller: "ArticleListCtrl", requireLogin: true });
   $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", requireLogin: true });
   //$routeProvider.when('/logout',  {templateUrl: "partials/logout.html"});
   $routeProvider.when("/signup", {templateUrl: "partials/signup.html", requireLogin: false });
