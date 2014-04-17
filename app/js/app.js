@@ -10,7 +10,8 @@ var myApp = angular.module('myApp', [
   'socialTradeControllers',
   'socialTradeAnimations',
   'login',
-  'auth'
+  'auth',
+  'register'
 
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -20,7 +21,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", controller: "ArticleListCtrl", requireLogin: true });
   $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", requireLogin: true });
   //$routeProvider.when('/logout',  {templateUrl: "partials/logout.html"});
-  $routeProvider.when("/signup", {templateUrl: "partials/signup.html", requireLogin: false });
+  $routeProvider.when("/signup", {templateUrl: "partials/signup.html", controller: "SignUpCtrl", requireLogin: false });
   $routeProvider.otherwise({redirectTo: '/trades'});
 }]);
 
