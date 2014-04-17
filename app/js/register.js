@@ -18,6 +18,7 @@ angular.module('register', ['ngResource'])
             }
             if(!exists) {
                 $scope.error = false;
+                // TODO: POST request to store user in
 
                 $location.path('/login');
             }

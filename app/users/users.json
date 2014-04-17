@@ -9,7 +9,8 @@
 		"username": "km4054",
 		"password": "mojegeslo",
 		"last_active": "2014-04-13T18:25:43.511Z",
-		"last_message": ""
+		"last_message": "",
+		"about": "No data."
 	},
 	{
 		"id": 1,
@@ -21,7 +22,8 @@
 		"username": "test",
 		"password": "tttttt",
 		"last_active": "2014-04-13T18:25:43.511Z",
-		"last_message": "test"
+		"last_message": "test",
+		"about" : "No data."
 	},
 	{
 		"id": 2,
@@ -33,7 +35,8 @@
 		"username": "test2",
 		"password": "tttttt2",
 		"last_active": "2014-04-13T18:25:43.511Z",
-		"last_message": ""
+		"last_message": "",
+		"about": "No data."
 	}
 
 

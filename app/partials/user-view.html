@@ -1,22 +1,35 @@
 
-<div ng-init="" id="ProfilePage">
-	<h1>{{user.first_name + " " + user.last_name}}</h1>
+<div id="ProfilePage">
+	<h1>{{userU.first_name + " " + userU.last_name}}</h1>
 	
 	<div >
-		<img ng-src="{{user.image}}" alt="User image">
+		<img ng-src="{{userU.image}}" alt="User image">
 		<address>
 			<ul>
-				<li>Email: <a href="mailto:{{user.e-mail}}">{{user.e-mail}}</a></li>
-				<li>Phone: {{user.phone}}</li>
+				<li>Email: <a href="mailto:{{userU.email}}">{{userU.email}}</a></li>
 			</ul>
 		</address>
 		<div id="about">
 			<p>
 				<span>About:<br></span>
-				{{user.about}}
+				{{userU.about}}
 			</p>
 		</div>
-		<!-- seznam prijateljev-->
+		<!-- TODO (could have): seznam prijateljev-->
 		<!-- seznam stvari na prodaj-->
+		<div class="span10">
+			<br />
+			<p> User's active trades </p>
+			<ul>
+    			<li ng-if="(trade.user_id == userU.id) && (trade.active==showfilter || showfilter==2)" ng-repeat="trade in trades | activeFilter | orderBy:order" class="thumbnail trade-listing">
+					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
+      				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
+      				<p >{{trade.article.description.substring(0,200)}}...</p>
+      				<p>{{trade.article.price}} €</p>
+					<p>Created: {{ trade.created | date }}</p> 
+     
+    			</li>
+  			</ul>
+  		</div>
 	</div>
 </div>

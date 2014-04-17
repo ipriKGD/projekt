@@ -1,14 +1,13 @@
-<!--TODO: dolociti kontroler-->
 <div class="container-fluid">
     <div class="row-fluid">
 	Search: <input ng-model="query">
      
      
     <ul class="">
-    <li ng-repeat="user in users | filter:query">
+    <li ng-repeat="user in users | filter:query | orderBy : order">
     	<div id="{{user.id}}">
     		<!--TODO: pravilen link -->
-	    	<a href="/profile/{{user.id}}">
+	    	<a href="#/users/{{user.id}}">
 	    		<img ng-src="{{user.image}}">
 	    		<span>{{user.first_name + " " + user.last_name}}</span>
 	    	</a>
