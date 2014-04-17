@@ -12,7 +12,7 @@ socialTradeServices.factory('socialTradeService', ['$resource',
 			users : $resource('users/:userId.json', {}, {
 				query: {method:'GET', params:{userId:'users'}, isArray:true}
 			}),
-			articles : $resource('/articles/:articleId.json', {}, {
+			articles : $resource('articles/:articleId.json', {}, {
 				query: {method:'GET', params:{articleId:'articles'}, isArray:true}
 			})
 		};
