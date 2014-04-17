@@ -8,7 +8,8 @@
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
       				<p>{{trade.article.price}} €</p>
-					<p>Created: {{ trade.created | date }}</p>  
+          <p ng-if="trade.active===1" >Created: {{ trade.created | date }} <b class="pull-right">Status: ACTIVE</b></p> 
+          <p ng-if="trade.active===1" >Created: {{ trade.created | date }} <b class="pull-right">Status: CLOSED</b></p> 
     			</li>
   			</ul>
   		</div>
