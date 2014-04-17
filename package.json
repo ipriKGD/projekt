@@ -28,7 +28,7 @@
     "url": "https://github.com/angular/angular-seed/issues"
   },
   "homepage": "https://github.com/angular/angular-seed",
-  "main": "scripts/web-server.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
