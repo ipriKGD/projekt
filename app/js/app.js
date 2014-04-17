@@ -15,7 +15,7 @@ var myApp = angular.module('myApp', [
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
-  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl'});
+  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', requireLogin: true});
   $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl", requireLogin: false });
   $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", controller: "ArticleListCtrl", requireLogin: true });
   $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", requireLogin: true });
