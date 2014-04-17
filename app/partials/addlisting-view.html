@@ -1,48 +1,58 @@
 <div class="container">
 
-<form class="form-horizontal" name='addListingForm' method='post' action=''>
+<form class="form-horizontal" name='addListingForm' ng-submit="newListing()" >
 	<fieldset>
 		<legend>Create a new listing</legend>
 		<div class="control-group">
 			<label class="control-label" for="title" autofocus>Title:</label>
 			<div class="controls">
-				<input type="text" required>
+				<input type="text" required ng-model="title">
 			</div>
 		</div>	
 		<div class="control-group">
 			<label class="control-label" for="price">Price:</label>
 			<div class="controls">
-				<input type="number" min="0" required>
-				
+				<input type="number" min="0" required ng-model="price"> <span>  €</span>
+				<!-- TODO: Possible extension
 				<select for="currency">
 					<option value="eur">EUR</option>
 					<option value="usd">USD</option>
-				</select>
+				</select> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="category">Category:</label>
 			<div class="controls">
+				<!-- TODO: Possible extension
 				<select ng-model="categoryList">
+					
 					<option ng-repeat="category in categories">
 						{{category}}
-					</option>
+					</option> -->
+				<select ng-model="category">
+					<option value="art">Art</option>
+					  <option value="computers">Computers</option>
+					  <option value="fashion">Fashion</option>
+					  <option value="sport">Sport</option>
+					  <option value="other">Other</option>
+					  <!-- TODO: more categories or category model -->
 				</select>
 			</div>
 		</div>
-		<div class="control-group">
+		<!-- TODO: lepsi tooltip -->
+		<div class="control-group" title='Check "Private" if you do not want your telephone number to be seen by others.'>
 			<label class="control-label" for="private">Private:</label>
 			<div class="controls">
-				<input type="checkbox" name="privateListing" value="true">
+				<input type="checkbox" name="privateListing" value="true" ng-model="mode" >
 			</div>	
 		</div>
 		<div class="control-group">
-			<!--image upload-->
+			<!--TODO: image upload-->
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="description">Description:</label><br>
 			<div class="controls">
-				<textarea name="description" cols="50" rows="5" required>Describe your item</textarea>
+				<textarea name="description" cols="50" rows="5" required ng-model="description">Describe your item</textarea>
 			</div>
 		</div>
 		<div class="control-group">
@@ -56,3 +66,8 @@
 	
 
 </div>
+<script>
+  $(function() {
+    $( document ).tooltip();
+  });
+ </script>
