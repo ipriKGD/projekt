@@ -1,9 +1,9 @@
 <div class="container-fluid">
-    <p> Showing your currently open trades </p>
+    <p> Showing all your trades </p>
 
       <div class="span10">
 			<ul>
-    			<li ng-if="(trade.user_id == user.id) && trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | activeFilter | orderBy:order" class="thumbnail trade-listing">
+    			<li ng-if="(trade.user_id == user.id) && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | activeFilter | orderBy:order" class="thumbnail trade-listing">
 					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
@@ -13,7 +13,6 @@
   			</ul>
   		</div>
     </div>
-    <a href="#/myclosedtrades">Show my closed trades</a><br>
-    <a href="#/allmytrades">Show all my trades</a>
+    <a href="#/mytrades">Show my open trades</a><br>
+    <a href="#/myclosedtrades">Show my closed trades</a>   
 </div>
-
