@@ -10,7 +10,8 @@
 		"password": "mojegeslo",
 		"last_active": "2014-04-13T18:25:43.511Z",
 		"last_message": "",
-		"about": "No data."
+		"about": "No data.",
+		"p_image":"img/user0.png"
 	},
 	{
 		"id": 1,
@@ -23,7 +24,8 @@
 		"password": "tttttt",
 		"last_active": "2014-04-13T18:25:43.511Z",
 		"last_message": "test",
-		"about" : "No data."
+		"about" : "No data.",
+		"p_image":"img/user1.png"
 	},
 	{
 		"id": 2,
@@ -36,7 +38,8 @@
 		"password": "tttttt2",
 		"last_active": "2014-04-13T18:25:43.511Z",
 		"last_message": "",
-		"about": "No data."
+		"about": "No data.",
+		"p_image":"img/user2.png"
 	}
 
 
