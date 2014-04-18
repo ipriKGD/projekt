@@ -1,0 +1,48 @@
+<h2>Register</h2><br>
+
+<form ng-submit="attemptRegister()" class="form-horizontal">
+    
+    <div class="control-group required">
+        <label for="input1" class="control-label">Username</label>
+        <div class="controls">
+          <input autofocus="autofocus" type="text" id="input1" ng-model="username"/>
+          <div ng-if="error" class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p>This username already exists.</p>
+        </div>
+        </div>
+    </div>
+    <div class="control-group required">
+        <label for="input2" class="control-label">Password</label>
+        <div class="controls">
+          <input type="password" id="input2" ng-model="password"/>
+        </div>
+    </div>
+    <div class="control-group required">
+        <label for="input3" class="control-label">First name</label>
+        <div class="controls">
+          <input type="text" id="input3" ng-model="first_name"/>
+        </div>
+    </div>
+    <div class="control-group required">
+        <label for="input4" class="control-label">Last name</label>
+        <div class="controls">
+          <input type="text" id="input4" ng-model="last_name"/>
+        </div>
+    </div>
+    <div class="control-group required">
+        <label for="input5" class="control-label">E-mail</label>
+        <div class="controls">
+          <input type="email" id="input5" ng-model="email"/>
+        </div>
+    </div>
+    <div class="control-group required">
+        <label for="input6" class="control-label">Phone</label>
+        <div class="controls">
+          <input type="tel" id="input6" ng-model="phone"/>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </div>
+</form>

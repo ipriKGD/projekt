@@ -1,0 +1,33 @@
+<h3>Edit my Profile</h3><br>
+
+<form ng-submit="editProfile()" class="form-horizontal">
+    <img ng-src="{{user.p_image}}" alt="User image" class="img-container-det">
+    <div class="control-group clearme">
+        <label for="input0" class="control-label">Profile picture</label>
+        <div class="controls">
+          <input  type="file" id="input0" ng-model="user.p_image"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="input1" class="control-label">E-mail</label>
+        <div class="controls">
+          <input  type="email" id="input1" ng-model="user.email"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="input2" class="control-label">Phone</label>
+        <div class="controls">
+          <input type="tel" id="input2" ng-model="user.phone"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="input3" class="control-label">About</label>
+        <div class="controls">
+           <textarea  name="description" cols="50" rows="5" ng-model="user.about" placeholder="Describe yourself."></textarea>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+    {{ user.email}}
+</form>

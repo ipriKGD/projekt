@@ -9,7 +9,7 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
     $scope.trades = socialTradeService.trades.query();
     $scope.order = '-created';
     $scope.category_show = 'all';
-
+    $scope.showfilter = "1";
     // TODO: preveri datume in avtomatsko zapri potecene trade (v backendu ali filtru)
 
   }]);
@@ -19,13 +19,15 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
     $scope.trade = socialTradeService.trades.get({tradeId: $routeParams.tradeId}, function(trade) {
     	$scope.mainImage = trade.article.image[0];
     	//get needed values from trade object
-    	// TODO: lahko izracunamo, koliko casa je se do konca z navadno JS skripto (get elements in izracunaj)
 
     });
     
     $scope.setImage = function(image) {
       $scope.mainImage = image;
     };
+    $scope.closeTrade = function(trade) {
+    	// TODO: PUT zahtevek za spremembo vrednosti atributa active v 0
+    }
 
     $scope.$watch('trade', function(oldValue, newValue) {
 		if (!newValue) {
@@ -45,7 +47,34 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
 		});
 		
 	});
+
+
 	
 	
+}]);
+
+socialTradeControllers.controller('UserListCtrl', ['$scope', 'socialTradeService',
+  function($scope, socialTradeService) {
+    $scope.users = socialTradeService.users.query();
+    $scope.order = 'last_name';
+
+}]);
+socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'socialTradeService',
+  function($scope, $routeParams, socialTradeService) {
+    $scope.userU = socialTradeService.users.get({userId: $routeParams.userId});
+    $scope.trades = socialTradeService.trades.query();
+    $scope.order = '-created';
+    $scope.category_show = 'all';
+    $scope.showfilter = "1";
+    //TODO: izboljsano (optimizirano) bo v naslednjih fazah, ko bo REST service
   }]);
 
+socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location',
+  function($scope, socialTradeService, $location) {
+     // TODO: Create a PUT request and store new data into DB
+      $scope.editProfile = function() {
+           $location.path('myprofile');
+      };
+
+
+}]);

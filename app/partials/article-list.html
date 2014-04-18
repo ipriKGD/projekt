@@ -14,7 +14,7 @@
      	<div class="span2">
 			<ul class="nav nav-list">
 
-					Search: <input ng-model="query" placeholder="Search">
+					Search: <input ng-model="query" placeholder="Search" >
 				<li class="nav-header">
 					Show category:
 					<select ng-model="category_show">
@@ -26,10 +26,11 @@
 					  <option value="other">Other</option>
 					</select>
 				</li>
+				<br ng-if="isLoggedIn()" />
+				<a class="btn btn-primary" ng-if="isLoggedIn()" href="#/newtrade">New Trade</a>
 			</ul>
 			<br />
       </div> 
-
       <div class="span10">
 			<ul>
     			<li ng-if="trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | filter: query | activeFilter | orderBy:order" class="thumbnail trade-listing">
@@ -37,7 +38,7 @@
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
       				<p>{{trade.article.price}} €</p>
-					<p>Ustvarjen: {{ trade.created | date }}</p>  
+					<p>Created: {{ trade.created | date }}</p>  
     			</li>
   			</ul>
 

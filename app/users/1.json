@@ -8,5 +8,7 @@
 		"username": "test",
 		"password": "tttttt",
 		"last_active": "2014-04-13T18:25:43.511Z",
-		"last_message": "test"
+		"last_message": "test",
+		"about": "No data.",
+		"p_image":"img/user1.png"
 	}

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <p ng-if="showfilter==1"> Showing your currently open trades </p>
+    <p ng-if="showfilter==0"> Showing your closed trades </p>
+    <p ng-if="showfilter==2"> Showing all your trades </p>
+
+    <ul class="nav nav-pills pull-right">
+    <li>
+      Show:<br>
+      <select ng-model="showfilter">
+        <option value="0">My closed trades</option>
+        <option value="1">My open trades</option>
+        <option value="2">All my trades</option>
+      </select>
+    </li>
+    </ul>
+
+      <div class="span10">
+			<ul>
+    			<li ng-if="(trade.user_id == user.id) && (trade.active==showfilter || showfilter==2)" ng-repeat="trade in trades | orderBy:order" class="thumbnail trade-listing">
+					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
+      				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
+      				<p >{{trade.article.description.substring(0,200)}}...</p>
+      				<p>{{trade.article.price}} €</p>
+					    <p ng-if="trade.active==1" >Created: {{ trade.created | date }} <b class="pull-right">Status: ACTIVE</b></p> 
+              <p ng-if="trade.active==0" >Created: {{ trade.created | date }} <b class="pull-right">Status: CLOSED</b></p> 
+    			</li>
+  			</ul>
+  		</div>
+    </div>
+</div>
+

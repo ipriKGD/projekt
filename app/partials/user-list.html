@@ -1,20 +1,19 @@
-<!--TODO: dolociti kontroler-->
 <div class="container-fluid">
+	<div class="pull-right">Search: <input ng-model="query" placeholder="Search" ></div><br>
+     
     <div class="row-fluid">
-	Search: <input ng-model="query">
-     
-     
-    <ul class="">
-    <li ng-repeat="user in users | filter:query">
-    	<div id="{{user.id}}">
-    		<!--TODO: pravilen link -->
-	    	<a href="/profile/{{user.id}}">
-	    		<img ng-src="{{user.image}}">
+    <b>Users:</b> 
+    <ul class="nav nav-list">
+
+    <li ng-repeat="user in users | filter:query | orderBy : order">
+    	<a href="#/users/{{user.id}}" class="thumbnail">
+    		<div id="{{user.id}}">	    	
+	    		<!--<img ng-src="{{user.image}}">-->
 	    		<span>{{user.first_name + " " + user.last_name}}</span>
-	    	</a>
-	    </div>
+	    	</div>
+	    </a>
     </li>
     </ul>
 
-	</div>      
+	</div>	     
 </div>

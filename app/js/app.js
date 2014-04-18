@@ -10,17 +10,23 @@ var myApp = angular.module('myApp', [
   'socialTradeControllers',
   'socialTradeAnimations',
   'login',
-  'auth'
+  'auth',
+  'register',
+  'newtrade'
 
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
-  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl'});
+  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', requireLogin: true});
   $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl", requireLogin: false });
-  $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", requireLogin: true });
+  $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", controller: "ArticleListCtrl", requireLogin: true });
   $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", requireLogin: true });
+  $routeProvider.when('/editprofile', {templateUrl: "partials/editprofile.html", controller: "UserEditCtrl", requireLogin: true });
   //$routeProvider.when('/logout',  {templateUrl: "partials/logout.html"});
-  $routeProvider.when("/signup", {templateUrl: "partials/signup.html", requireLogin: false });
+  $routeProvider.when("/signup", {templateUrl: "partials/signup.html", controller: "SignUpCtrl", requireLogin: false });
+  $routeProvider.when("/users", {templateUrl: "partials/user-list.html", controller: "UserListCtrl", requireLogin: true });
+  $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", requireLogin: true });
+  $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", requireLogin: true });
   $routeProvider.otherwise({redirectTo: '/trades'});
 }]);
 
@@ -38,13 +44,24 @@ myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthSe
 
 // Main App controller - used for "fake" authentication
  myApp.controller('MainCtrl', ['$scope', 'AuthService', '$location', function($scope, AuthService, $location) {
+ 	
+ 	// check if user is authenticated on every page and return them
+ 	$scope.$on('$viewContentLoaded', function() {
+		
+		$scope.user = AuthService.getAuthenticatedUser();
+		
+	});
     $scope.logoutUser = function() {
         // run a logout function to your api
         AuthService.setUserAuthenticated(false);
+        AuthService.setAuthenticatedUser(null);
         $location.path('/login');
     };
 
     $scope.isLoggedIn = function() {
         return AuthService.getUserAuthenticated();
+    };
+    $scope.isActive = function(url) {
+    	return url == $location.$$url;
     };
 }]);
