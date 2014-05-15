@@ -12,8 +12,9 @@ var myApp = angular.module('myApp', [
   'login',
   'auth',
   'register',
-  'newtrade'
-
+  'newtrade',
+  'angulartics',
+  'angulartics.google.analytics'
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
