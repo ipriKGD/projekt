@@ -45,10 +45,10 @@
 						</ul>
 						
 						<form class="navbar-form pull-right">
-								<a class="btn" ng-show-auth='logout,error'  href="#/login">Sign In</a>
-								<a class="btn" ng-show-auth='logout,error'  href="#/signup">Sign Up</a>
-								<a class="visible-desktop" style="float: left; margin: 10px;" ng-show-auth='login' href="#/myprofile">{{user.username}}</a>
-								<a href="#" class="btn" ng-show-auth='login' ng-click="logout()">Log Out</a>
+								<a class="btn" ng-show-auth='logout,error'  id="lgin" href="#/login">Sign In</a>
+								<a class="btn" ng-show-auth='logout,error'  id="reg" href="#/signup">Sign Up</a>
+								<a class="visible-desktop " style="float: left; margin: 10px; position:relative; left: 45%;" ng-show-auth='login' id="lginfo" href="#/myprofile">{{user.username}}</a>
+								<a href="#" class="btn" ng-show-auth='login' id="lgout" ng-click="logout()">Log Out</a>
 						</form>
 					</div><!--/.nav-collapse -->
 				</div>

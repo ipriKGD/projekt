@@ -57,7 +57,7 @@ angular.module('login', ['ngResource'])
             $location.path('/trades'); 
         };
     }]); */
-    .controller('LoginCtrl', ['$scope', 'loginService', '$location', function($scope, loginService, $location) {
+    .controller('LoginCtrl', ['$scope', 'loginService', '$location','syncData', 'AuthService', function($scope, loginService, $location, syncData,AuthService) {
       $scope.email = null;
       $scope.pass = null;
       $scope.confirm = null;
@@ -75,7 +75,16 @@ angular.module('login', ['ngResource'])
             loginService.login($scope.email, $scope.pass, function(err, user) {
                $scope.err = err? err + '' : null;
                if( !err ) {
-                  cb && cb(user);
+                //  var id = parseInt(user.id);
+                  //console.log(id);
+             //     AuthService.setUserAuthenticated(true);
+               //   AuthService.setAuthenticatedUser(syncData(['users', id-1]));
+                  cb && cb(user); 
+                  /* $("#lgin").css("display","none");
+                  $("#reg").css("display","none");
+                  $("#lgout").css("display"," ");
+                  $("#lginfo").css("display","");
+                  $location.path('/trades'); */
                }
             });
          }

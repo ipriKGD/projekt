@@ -92,10 +92,23 @@ myApp.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootSc
     };
 }]);
 */
-myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', function($scope, loginService, syncData, $location) {
+myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', function($scope, loginService, syncData, $location, AuthService) {
 
-      //online = false v logoutu!
+      $scope.$on('$viewContentLoaded', function() {
+        // $scope.user = AuthService.getAuthenticatedUser();
+        if($scope.auth.user != null) {
+          var id = parseInt($scope.auth.user.id);
+          $scope.user =  syncData(['users', id-1]);
+        }
+      });
+      //online = false v logoutu! - http://stackoverflow.com/questions/15982215/firebase-count-online-users
       $scope.logout = function() {
+       //  AuthService.setUserAuthenticated(false);
+      //   AuthService.setAuthenticatedUser(null);
+        /*  $("#lgin").css("display","");
+          $("#reg").css("display","");
+          $("#lgout").css("display","none");
+          $("#lginfo").css("display","none"); */
          loginService.logout();
       };
   }]);
