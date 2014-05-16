@@ -15,7 +15,7 @@ var myApp = angular.module('myApp', [
   'newtrade',
   'angulartics',
   'angulartics.google.analytics',
-  'firebase'
+  'firebaseService'
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
