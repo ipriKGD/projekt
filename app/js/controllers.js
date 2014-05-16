@@ -54,26 +54,24 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
 		//bind trade pomeni, da dodas tisto v userja/article!!! PAZI!!
     //bind user bi verjetno pomenil update!!! (torej daj bind na trade!!! !)
 	
-
-
-	
-	
 }]);
 
-socialTradeControllers.controller('UserListCtrl', ['$scope', 'socialTradeService',
-  function($scope, socialTradeService) {
-    $scope.users = socialTradeService.users.query();
+socialTradeControllers.controller('UserListCtrl', ['$scope', 'socialTradeService', 'syncData',
+  function($scope, socialTradeService, syncData) {
+    //$scope.users = socialTradeService.users.query();
+    $scope.users = syncData('users');
     $scope.order = 'last_name';
 
 }]);
-socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'socialTradeService',
-  function($scope, $routeParams, socialTradeService) {
-    $scope.userU = socialTradeService.users.get({userId: $routeParams.userId});
-    $scope.trades = socialTradeService.trades.query();
+socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'socialTradeService', 'syncData',
+  function($scope, $routeParams, socialTradeService, syncData) {
+    //$scope.userU = socialTradeService.users.get({userId: $routeParams.userId});
+    //$scope.trades = socialTradeService.trades.query();
+    $scope.userU = syncData(['users', $routeParams.userId]);
+    $scope.trades = syncData('trades');
     $scope.order = '-created';
     $scope.category_show = 'all';
     $scope.showfilter = "1";
-    //TODO: izboljsano (optimizirano) bo v naslednjih fazah, ko bo REST service
   }]);
 
 socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location',

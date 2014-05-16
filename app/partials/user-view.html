@@ -16,7 +16,7 @@
 		<!-- TODO (could have): seznam prijateljev-->
 		<!-- seznam stvari na prodaj-->
 			<dt> User's active trades:</dt><br>
-    			<dd ng-if="(trade.user_id == userU.id)&& (trade.active==showfilter || showfilter==2)" ng-repeat="trade in trades| orderBy:order" class="thumbnail trade-listing">
+    			<dd ng-if="(trade.user_id == userU.id)&& (trade.active==showfilter || showfilter==2)" ng-repeat="trade in trades| orderByPriority |orderBy:order" class="thumbnail trade-listing">
 					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
