@@ -80,3 +80,7 @@ img.detail {
   max-width: 150px;
   margin: auto;
 }
+.hide {
+   display: none;
+   visibility: hidden;
+}
