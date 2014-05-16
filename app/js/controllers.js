@@ -78,3 +78,18 @@ socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService
 
 
 }]);
+
+
+/*V VSAK CONTROLLER JE POTREBNO INJECTAT $firebase service
+ firebase lahko naredimo kot service - glej angularfire seed project
+ ALI v kontrolerju: 
+          var ref = new Firebase("https://feg3jk6f9bz.firebaseio-demo.com/");
+          $scope.messages = $firebase(ref);
+          //dodajanje
+          $scope.addMessage = function(e) { //to je event na input submit ng-keydown="addmessage(...)"
+            if (e.keyCode != 13) return;
+            $scope.messages.$add({from: $scope.name, body: $scope.msg});
+            $scope.msg = "";
+          };
+
+*/

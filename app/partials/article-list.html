@@ -1,16 +1,23 @@
-﻿<div class="container-fluid">
-    <div class="row-fluid">
-		<ul class="nav nav-pills pull-right ">
-		<li>
-			Sort by:<br>
-			<select ng-model="order">
-			  <option value="article.title">Alphabetical</option>
-			  <option value="article.price">Lowest price</option>
-			  <option value="-article.price">Highest price</option>
-			  <option value="-created">Newest</option>
-			</select>
-		</li>
-		</ul>
+﻿
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-right">
+			
+			<ul class="nav nav-pills">
+			<li>
+				Sort by:<br>
+				<select ng-model="order">
+			  	<option value="article.title">Alphabetical</option>
+			  	<option value="article.price">Lowest price</option>
+			  	<option value="-article.price">Highest price</option>
+			  	<option value="-created">Newest</option>
+				</select>
+			</li>			
+			</ul>
+			<a class="btn btn-primary pull-right" ng-if="isLoggedIn()" href="#/newtrade">New Trade</a>
+		</div>		
+
      	<div class="span2">
 			<ul class="nav nav-list">
 
@@ -26,14 +33,12 @@
 					  <option value="other">Other</option>
 					</select>
 				</li>
-				<br ng-if="isLoggedIn()" />
-				<a class="btn btn-primary" ng-if="isLoggedIn()" href="#/newtrade">New Trade</a>
 			</ul>
-			<br />
+			
       </div> 
       <div class="span10">
 			<ul>
-    			<li ng-if="trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | filter: query | activeFilter | orderBy:order" class="thumbnail trade-listing">
+    			<li ng-if="trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | filter: query | orderBy:order" class="thumbnail trade-listing">
 					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
       				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>

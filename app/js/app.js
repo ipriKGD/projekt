@@ -12,8 +12,10 @@ var myApp = angular.module('myApp', [
   'login',
   'auth',
   'register',
-  'newtrade'
-
+  'newtrade',
+  'angulartics',
+  'angulartics.google.analytics',
+  'firebase'
 ]);
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
@@ -28,7 +30,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", requireLogin: true });
   $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", requireLogin: true });
   $routeProvider.otherwise({redirectTo: '/trades'});
-}]);
+}]).constant('FBURL', 'https://socialtrade.firebaseio.com')
+;
 
 // Testing user's rights to access a url
 myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthService, $location){
