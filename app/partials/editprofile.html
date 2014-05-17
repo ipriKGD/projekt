@@ -1,6 +1,6 @@
 <h3>Edit my Profile</h3><br>
 
-<form ng-submit="editProfile()" class="form-horizontal">
+<form class="form-horizontal">
     <img ng-src="{{user.p_image}}" alt="User image" class="img-container-det">
     <div class="control-group clearme">
         <label for="input0" class="control-label">Profile picture</label>
@@ -9,9 +9,9 @@
         </div>
     </div>
     <div class="control-group">
-        <label for="input1" class="control-label">E-mail</label>
+        <label for="input1" class="control-label">Username</label>
         <div class="controls">
-          <input  type="email" id="input1" ng-model="user.email"/>
+          <input type="text" id="input1" ng-model="user.username"/>
         </div>
     </div>
     <div class="control-group">
@@ -27,7 +27,6 @@
         </div>
     </div>
     <div class="form-actions">
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" ng-click="editProfile()">Submit</button>
     </div>
-    {{ user.email}}
 </form>
