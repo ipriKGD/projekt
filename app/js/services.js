@@ -126,8 +126,9 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
       }])
 
    .factory('profileCreator', ['firebaseRef', '$timeout', function(firebaseRef, $timeout) {
-      return function(id, email, callback) {
-         firebaseRef('users/'+id).set({email: email, name: firstPartOfEmail(email)}, function(err) {
+      return function(id, email, first_name, last_name, phone, callback) {
+         firebaseRef('users/'+id).set({about: "No data.", email: email, id: id, first_name: first_name, last_message: "", last_name: last_name,
+          online: true, p_image: " ", phone: phone, username: firstPartOfEmail(email)}, function(err) {
             //err && console.error(err);
             if( callback ) {
                $timeout(function() {
@@ -137,7 +138,7 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
          });
 
          function firstPartOfEmail(email) {
-            return ucfirst(email.substr(0, email.indexOf('@'))||'');
+            return email.substr(0, email.indexOf('@'))||'';
          }
 
          function ucfirst (str) {
