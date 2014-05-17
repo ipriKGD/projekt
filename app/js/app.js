@@ -15,8 +15,12 @@ var myApp = angular.module('myApp', [
   'newtrade',
   'angulartics',
   'angulartics.google.analytics',
-  'firebase'
+  'firebaseService',
+  'loginServices',
+  'waitForAuth',
+  'routeSecurity'
 ]);
+/* FAKE login
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
   $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', requireLogin: true});
@@ -30,10 +34,24 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", requireLogin: true });
   $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", requireLogin: true });
   $routeProvider.otherwise({redirectTo: '/trades'});
-}]).constant('FBURL', 'https://socialtrade.firebaseio.com')
+}]).constant('FBURL', 'https://socialtrade.firebaseio.com').constant('loginRedirectPath', '/login')
+; */
+myApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
+  $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', authRequired: true});
+  $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl"});
+  $routeProvider.when('/mytrades', {templateUrl: "partials/mytrades.html", controller: "ArticleListCtrl", authRequired: true});
+  $routeProvider.when('/myprofile', {templateUrl: "partials/myprofile.html", authRequired: true});
+  $routeProvider.when('/editprofile', {templateUrl: "partials/editprofile.html", controller: "UserEditCtrl", authRequired: true });
+  //$routeProvider.when('/logout',  {templateUrl: "partials/logout.html"});
+  $routeProvider.when("/signup", {templateUrl: "partials/signup.html", controller: "SignUpCtrl"});
+  $routeProvider.when("/users", {templateUrl: "partials/user-list.html", controller: "UserListCtrl", authRequired: true });
+  $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", authRequired: true });
+  $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", authRequired: true });
+  $routeProvider.otherwise({redirectTo: '/trades'});
+}]).constant('FBURL', 'https://socialtrade.firebaseio.com').constant('loginRedirectPath', '/login')
 ;
-
-// Testing user's rights to access a url
+/* FAKE login - Testing user's rights to access a url
 myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthService, $location){
     // Everytime the route in our app changes check auth status
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
@@ -43,9 +61,14 @@ myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthSe
             event.preventDefault();
         }
     });
+}]); */
+myApp.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
+   // establish authentication
+   $rootScope.auth = loginService.init('/login');
+   $rootScope.FBURL = FBURL;
 }]);
 
-// Main App controller - used for "fake" authentication
+/* Main App controller - used for "fake" authentication
  myApp.controller('MainCtrl', ['$scope', 'AuthService', '$location', function($scope, AuthService, $location) {
  	
  	// check if user is authenticated on every page and return them
@@ -68,3 +91,24 @@ myApp.run(['$rootScope', 'AuthService', '$location', function($rootScope, AuthSe
     	return url == $location.$$url;
     };
 }]);
+*/
+myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', function($scope, loginService, syncData, $location, AuthService) {
+
+      $scope.$on('$viewContentLoaded', function() {
+        // $scope.user = AuthService.getAuthenticatedUser();
+        if($scope.auth.user != null) {
+          var id = parseInt($scope.auth.user.id);
+          $scope.user =  syncData(['users', id-1]);
+        }
+      });
+      //online = false v logoutu! - http://stackoverflow.com/questions/15982215/firebase-count-online-users
+      $scope.logout = function() {
+       //  AuthService.setUserAuthenticated(false);
+      //   AuthService.setAuthenticatedUser(null);
+        /*  $("#lgin").css("display","");
+          $("#reg").css("display","");
+          $("#lgout").css("display","none");
+          $("#lginfo").css("display","none"); */
+         loginService.logout();
+      };
+  }]);

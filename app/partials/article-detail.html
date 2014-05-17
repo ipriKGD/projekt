@@ -30,7 +30,7 @@
     <p ng-if="!tradeUser.online && tradeUser.id != user.id"><strong>User is not online. </strong></p>
 		<!-- TODO: naredi chat -->
   	</li>
-    <a class="btn btn-primary" ng-if="tradeUser.id == user.id" ng-click="closeTrade(trade.id)">Close trade</a>
+    <a class="btn btn-primary" ng-if="tradeUser.id == user.id && trade.active == 1" ng-click="closeTrade(trade.id)">Close trade</a>
 </ul>
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
 </div>

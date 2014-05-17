@@ -5,7 +5,7 @@
     <b>Users:</b> 
     <ul class="nav nav-list">
 
-    <li ng-repeat="user in users | filter:query | orderBy : order">
+    <li ng-repeat="user in users | orderByPriority | filter:query | orderBy : order">
     	<a href="#/users/{{user.id}}" class="thumbnail">
     		<div id="{{user.id}}">	    	
 	    		<!--<img ng-src="{{user.image}}">-->

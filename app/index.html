@@ -21,7 +21,8 @@
 	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="js/ganalytics.js"></script>
 </head>
-<body ng-cloak ng-controller="MainCtrl"> <!-- MainCtrl is used for the "fake" login service -->
+<!-- <body ng-cloak ng-controller="MainCtrl"> MainCtrl is used for the "fake" login service -->
+	<body ng-cloak-auth class="hide" ng-controller="MainCtrl">
 	<!--[if lt IE 7]>
 		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
@@ -34,20 +35,20 @@
 						<span class="icon-bar"></span>
 					</a>
 					<a class="brand" href="#/trades">SocialTrade</a>
-					<a class="hidden-desktop" style="float: right; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile">{{user.username}}</a>
+					<a class="hidden-desktop" style="float: right; margin: 10px;" ng-show-auth="login" href="#/myprofile">{{user.username}}</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="{active : isActive('/trades')}"><a href="#/trades">Home</a></li>
-							<li ng-if='isLoggedIn()' class="{active : isActive('/mytrades')}"><a href="#/mytrades">My Trades</a></li>
-							<li ng-if='isLoggedIn()' class="{active : isActive('/myprofile')}"><a href="#/myprofile">My Profile</a></li>
-							<li ng-if='isLoggedIn()' class="{active : isActive('/users')}"><a href="#/users">Users</a></li>
+							<li ng-show-auth="login" class="{active : isActive('/mytrades')}"><a href="#/mytrades">My Trades</a></li>
+							<li ng-show-auth="login" class="{active : isActive('/myprofile')}"><a href="#/myprofile">My Profile</a></li>
+							<li ng-show-auth="login" class="{active : isActive('/users')}"><a href="#/users">Users</a></li>
 						</ul>
 						
 						<form class="navbar-form pull-right">
-								<a class="btn" ng-if='!isLoggedIn()'  href="#/login">Sign In</a>
-								<a class="btn" ng-if='!isLoggedIn()'  href="#/signup">Sign Up</a>
-								<a class="visible-desktop" style="float: left; margin: 10px;" ng-if='isLoggedIn()' href="#/myprofile">{{user.username}}</a>
-								<a href="#" class="btn" ng-if='isLoggedIn()' ng-click="logoutUser()">Log Out</a>
+								<a class="btn" ng-show-auth='logout,error'  id="lgin" href="#/login">Sign In</a>
+								<a class="btn" ng-show-auth='logout,error'  id="reg" href="#/signup">Sign Up</a>
+								<a class="visible-desktop " style="float: left; margin: 10px; position:relative; left: 45%;" ng-show-auth='login' id="lginfo" href="#/myprofile">{{user.username}}</a>
+								<a href="#" class="btn" ng-show-auth='login' id="lgout" ng-click="logout()">Log Out</a>
 						</form>
 					</div><!--/.nav-collapse -->
 				</div>
@@ -81,6 +82,7 @@
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/module.routeSecurity.js"></script>
   <script src="js/iso8601.js"></script>
   <script src="js/bootstrap-alert.js"></script>
   <!-- fake login service -->
@@ -91,6 +93,7 @@
   <script src="js/newtrade.js"></script>
   <!-- Firebase -->
   <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+  <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
   <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
   <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
   
