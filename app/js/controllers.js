@@ -14,8 +14,8 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
 
   }]);
 
-socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'socialTradeService', 'syncData',
-  function($scope, $routeParams, socialTradeService, syncData) {
+socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'socialTradeService', 'syncData', 'firebaseRef',
+  function($scope, $routeParams, socialTradeService, syncData, firebaseRef) {
    //$scope.trade = socialTradeService.trades.get({tradeId: $routeParams.tradeId}, function(trade) {
    // console.log('trades/'+$routeParams.tradeId);
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
@@ -28,7 +28,9 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
       $scope.mainImage = image;
     };
     $scope.closeTrade = function(trade) {
-    	// TODO: PUT zahtevek za spremembo vrednosti atributa active v 0
+      $scope.trade.active = 0;
+      firebaseRef('trades/'+$scope.trade.id).update({active: 0});
+
     }
 
     /*$scope.$watch('trade', function(oldValue, newValue) {
@@ -74,10 +76,11 @@ socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', '
     $scope.showfilter = "1";
   }]);
 
-socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location',
-  function($scope, socialTradeService, $location) {
-     // TODO: Create a PUT request and store new data into DB
+socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location', 'firebaseRef',
+  function($scope, socialTradeService, $location, firebaseRef) {
+     // TODO: Update picture!!!
       $scope.editProfile = function() {
+           firebaseRef('users/'+$scope.user.id).update({username: $scope.user.username, phone: $scope.user.phone, about: $scope.user.about});
            $location.path('myprofile');
       };
 
