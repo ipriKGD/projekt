@@ -77,16 +77,8 @@ angular.module('login', ['ngResource'])
                $scope.err = err? err + '' : null;
                if( !err ) {
                  var id = parseInt(user.id);
-                  console.log(id);
-             //     AuthService.setUserAuthenticated(true);
-               //   AuthService.setAuthenticatedUser(syncData(['users', id-1]));
                   firebaseRef('users/'+(id-1)).update({online: true});
                   cb && cb(user); 
-                  /* $("#lgin").css("display","none");
-                  $("#reg").css("display","none");
-                  $("#lgout").css("display"," ");
-                  $("#lginfo").css("display","");
-                  $location.path('/trades'); */
                }
             });
          }
