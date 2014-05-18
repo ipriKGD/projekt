@@ -92,13 +92,15 @@ myApp.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootSc
     };
 }]);
 */
-myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', function($scope, loginService, syncData, $location, AuthService) {
+myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', 'firebaseRef',
+ function($scope, loginService, syncData, $location, AuthService, firebaseRef) {
 
       $scope.$on('$viewContentLoaded', function() {
         // $scope.user = AuthService.getAuthenticatedUser();
         if($scope.auth.user != null) {
           var id = parseInt($scope.auth.user.id);
           $scope.user =  syncData(['users', id-1]);
+         // firebaseRef('users/'+$scope.user.id).update({online: true});
         }
       });
       //online = false v logoutu! - http://stackoverflow.com/questions/15982215/firebase-count-online-users
@@ -109,6 +111,17 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
           $("#reg").css("display","");
           $("#lgout").css("display","none");
           $("#lginfo").css("display","none"); */
+          $scope.user.online = false;
+          $scope.user.last_active = ISODateString(new Date());
+          firebaseRef('users/'+$scope.user.id).update({online: false, last_active: $scope.user.last_active});
          loginService.logout();
       };
   }]);
+function ISODateString(d){
+ function pad(n){return n<10 ? '0'+n : n}
+ return d.getUTCFullYear()+'-'
+      + pad(d.getUTCMonth()+1)+'-'
+      + pad(d.getUTCDate())+'T'
+      + pad(d.getUTCHours())+':'
+      + pad(d.getUTCMinutes())+':'
+      + pad(d.getUTCSeconds())+'Z'}
