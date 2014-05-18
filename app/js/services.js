@@ -93,6 +93,13 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
                   }, callback);
             },
 
+            loginFB: function() {
+              auth.$login('facebook', {
+              rememberMe: true,
+              scope: 'email,user_likes'
+            });
+            },
+
             logout: function() {
                assertAuth();
                auth.$logout();

@@ -84,6 +84,10 @@ angular.module('login', ['ngResource'])
          }
       };
 
+      $scope.loginFB = function() {
+        loginService.loginFB();
+      };
+
       $scope.createAccount = function() {
          $scope.err = null;
          if( assertValidLoginAttempt() ) {
