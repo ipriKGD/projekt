@@ -3,9 +3,10 @@
 <form class="form-horizontal">
     <img ng-src="{{user.p_image}}" alt="User image" class="img-container-det">
     <div class="control-group clearme">
-        <label for="input0" class="control-label">Profile picture</label>
+        <label for="input0" class="control-label">Profile picture URL</label>
         <div class="controls">
-          <input  type="file" id="input0" ng-model="user.p_image"/>
+         <!-- <input  type="file" id="input0" ng-model="user.p_image"/> -->
+            <input  type="text" id="input0" ng-model="user.p_image"/> 
         </div>
     </div>
     <div class="control-group">

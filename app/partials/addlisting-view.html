@@ -53,11 +53,17 @@
 		<div class="control-group">
 
 			<!--TODO: image upload-->
-			<label class="control-label" for="imageUpload">Add image:</label>
+			<label class="control-label" for="userImage">Add image:</label>
 			<div class="controls">
-				<input type="file" name="userImage" ng-model="image">
-
+				<input type="file" name="userImage" accept="image/*" ng-model="img" id="file-upload">
 			</div>
+
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="imageUrl">Or enter image URL:</label>
+					<div class="controls" id="image-urls">
+						<input type="text" name="imageUrl" ng-model="image" id="image1"> 
+					</div> 
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="description">Description:</label><br>

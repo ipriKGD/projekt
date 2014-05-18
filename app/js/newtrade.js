@@ -6,6 +6,7 @@ angular.module('newtrade', ['ngResource'])
         // TODO: slika - nalaganje!
         $scope.category="art";
         $scope.image="";
+    
          $scope.newListing = function() {
              $scope.t = syncData('trades');
              $scope.t.$on("loaded", function() {
