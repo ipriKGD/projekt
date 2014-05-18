@@ -80,7 +80,8 @@ socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService
   function($scope, socialTradeService, $location, firebaseRef) {
      // TODO: Update picture!!!
       $scope.editProfile = function() {
-           firebaseRef('users/'+$scope.user.id).update({username: $scope.user.username, phone: $scope.user.phone, about: $scope.user.about});
+            if($scope.user.p_image.lenght== 0) $scope.user.p_image="";
+           firebaseRef('users/'+$scope.user.id).update({p_image:$scope.user.p_image, username: $scope.user.username, phone: $scope.user.phone, about: $scope.user.about});
            $location.path('myprofile');
       };
 
