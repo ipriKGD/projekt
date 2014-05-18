@@ -57,7 +57,8 @@ angular.module('login', ['ngResource'])
             $location.path('/trades'); 
         };
     }]); */
-    .controller('LoginCtrl', ['$scope', 'loginService', '$location','syncData', 'AuthService', function($scope, loginService, $location, syncData,AuthService) {
+    .controller('LoginCtrl', ['$scope', 'loginService', '$location','syncData', 'AuthService',
+    'firebaseRef', function($scope, loginService, $location, syncData,AuthService, firebaseRef) {
       $scope.email = null;
       $scope.pass = null;
       $scope.confirm = null;
@@ -75,10 +76,11 @@ angular.module('login', ['ngResource'])
             loginService.login($scope.email, $scope.pass, function(err, user) {
                $scope.err = err? err + '' : null;
                if( !err ) {
-                //  var id = parseInt(user.id);
-                  //console.log(id);
+                 var id = parseInt(user.id);
+                  console.log(id);
              //     AuthService.setUserAuthenticated(true);
                //   AuthService.setAuthenticatedUser(syncData(['users', id-1]));
+                  firebaseRef('users/'+(id-1)).update({online: true});
                   cb && cb(user); 
                   /* $("#lgin").css("display","none");
                   $("#reg").css("display","none");
