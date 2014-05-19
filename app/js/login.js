@@ -58,7 +58,7 @@ angular.module('login', ['ngResource'])
         };
     }]); */
     .controller('LoginCtrl', ['$scope', 'loginService', '$location','syncData', 'AuthService',
-    'firebaseRef', function($scope, loginService, $location, syncData,AuthService, firebaseRef) {
+    'firebaseRef', 'fbloginservice','$rootScope', function($scope, loginService, $location, syncData,AuthService, firebaseRef, fbloginservice, $rootScope) {
       $scope.email = null;
       $scope.pass = null;
       $scope.confirm = null;
@@ -85,8 +85,32 @@ angular.module('login', ['ngResource'])
       };
 
       $scope.loginFB = function() {
+       
         loginService.loginFB();
+        // listen for user auth events
+        $rootScope.$on("fblogin", function(event, user) {
+            // do login things
+            //$scope.user = user;
+            $scope.$apply;
+            console.log(user);
+        })
+        $rootScope.$on("loginError", function(event, error) {
+            // tell the user about the error
+        })
+        $rootScope.$on("logout", function(event) {
+            // do logout things
+        })
+
       };
+      $scope.loginG = function() {
+
+        loginService.loginG();
+        $rootScope.$on("glogin", function(event, user) {
+            // do login things
+            //$scope.user = user;
+            $scope.$apply;
+        })
+     };
 
       $scope.createAccount = function() {
          $scope.err = null;
