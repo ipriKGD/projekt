@@ -63,8 +63,8 @@ function pathRef(args) {
 
 var loginService = angular.module('loginServices', ['firebase', 'firebaseService'])
 
-   .factory('loginService', ['$rootScope', '$firebaseSimpleLogin', 'firebaseRef', 'profileCreator', '$timeout',
-      function($rootScope, $firebaseSimpleLogin, firebaseRef, profileCreator, $timeout) {
+   .factory('loginService', ['$rootScope', '$firebaseSimpleLogin', 'firebaseRef', 'profileCreator', '$timeout', 'syncData',
+      function($rootScope, $firebaseSimpleLogin, firebaseRef, profileCreator, $timeout, syncData) {
          var auth = null;
          return {
             init: function() {
@@ -97,7 +97,24 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
               auth.$login('facebook', {
               rememberMe: true,
               scope: 'email,user_likes'
+            }).then(function(user){
+              console.log(user);
+             //$rootScope.$emit("fblogin", user);
             });
+            
+              //pridobi podatke
+            },
+            loginG: function() {
+
+             auth.$login('google', {
+              rememberMe: true,
+              scope: 'https://www.googleapis.com/auth/plus.login'
+
+            }).then(function(user){
+              $rootScope.$emit("glogin", user);
+
+            });
+
             },
 
             logout: function() {
@@ -156,3 +173,19 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
          }
       }
    }]);
+
+  var fblogin = angular.module('fblogin', ['firebase', 'firebaseService'])
+    .service('fbloginservice', ["$rootScope", function($rootScope) {
+    var ref = new Firebase("https://socialtrade.firebaseio.com");
+    this.auth = new FirebaseSimpleLogin(ref, function(error, user) {
+        if (user) {
+            $rootScope.$emit("login", user);
+        }
+        else if (error) {
+            $rootScope.$emit("loginError", error);
+        }
+        else {
+            $rootScope.$emit("logout");
+        }   
+    });
+}]);

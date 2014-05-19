@@ -18,7 +18,8 @@ var myApp = angular.module('myApp', [
   'firebaseService',
   'loginServices',
   'waitForAuth',
-  'routeSecurity'
+  'routeSecurity',
+  'fblogin'
 ]);
 /* FAKE login
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -92,17 +93,35 @@ myApp.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootSc
     };
 }]);
 */
-myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', 'firebaseRef',
- function($scope, loginService, syncData, $location, AuthService, firebaseRef) {
+myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', 'firebaseRef', '$rootScope',
+ function($scope, loginService, syncData, $location, AuthService, firebaseRef, $rootScope) {
 
       $scope.$on('$viewContentLoaded', function() {
         // $scope.user = AuthService.getAuthenticatedUser();
-        if($scope.auth.user != null) {
+        if($scope.auth.user != null && $scope.auth.user.provider !== "google") {
           var id = parseInt($scope.auth.user.id);
           $scope.user =  syncData(['users', id-1]);
          // firebaseRef('users/'+$scope.user.id).update({online: true});
         }
       });
+       $rootScope.$on("glogin", function(event, user) {
+            // do login things
+            //$scope.user = user;
+            $scope.$apply;
+            //find user by email
+            //TODO: izboljsava - avtomatska registracija, ce ga se ni!
+            console.log(user.email);
+            $scope.tu = syncData('users');
+            $scope.tu.$on("loaded", function() {
+              var keys = $scope.tu.$getIndex();
+               angular.forEach(keys, function(key) {
+
+                 console.log(key, $scope.tu[key].email);
+              });
+
+            });
+
+        });
       //online = false v logoutu! - http://stackoverflow.com/questions/15982215/firebase-count-online-users
       $scope.logout = function() {
        //  AuthService.setUserAuthenticated(false);
@@ -111,9 +130,11 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
           $("#reg").css("display","");
           $("#lgout").css("display","none");
           $("#lginfo").css("display","none"); */
+          if($scope.user != null) {
           $scope.user.online = false;
           $scope.user.last_active = ISODateString(new Date());
           firebaseRef('users/'+$scope.user.id).update({online: false, last_active: $scope.user.last_active});
+          }
          loginService.logout();
       };
   }]);
