@@ -98,8 +98,8 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
               rememberMe: true,
               scope: 'email,user_likes'
             }).then(function(user){
-              console.log(user);
-             //$rootScope.$emit("fblogin", user);
+              //console.log(user);
+             $rootScope.$emit("fblogin", user);
             });
             
               //pridobi podatke

@@ -114,14 +114,67 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
             $scope.tu = syncData('users');
             $scope.tu.$on("loaded", function() {
               var keys = $scope.tu.$getIndex();
+              var reg = false;
+              var id = 0;
                angular.forEach(keys, function(key) {
+                 if($scope.tu[key].email === user.email) {
+                    reg = true;
+                    id = key;
+                 } 
 
-                 console.log(key, $scope.tu[key].email);
+                 
+                 //onsole.log(key, $scope.tu[key].email);
               });
+              if(!reg) {
+                
+                  //TODO: automatically register user
+                 $scope.logout();
+                 $location.path("/signup");
+              } else {
+                //Get user
+                $scope.user = syncData(["users", id]);
+              }
+
 
             });
 
         });
+        $rootScope.$on("fblogin", function(event, user) {
+            // do login things
+            //$scope.user = user;
+            $scope.$apply;
+            //find user by email
+            //TODO: izboljsava - avtomatska registracija, ce ga se ni!
+            //console.log(user.thirdPartyUserData.email);
+            $scope.tu = syncData('users');
+            $scope.tu.$on("loaded", function() {
+              var keys = $scope.tu.$getIndex();
+              var reg = false;
+              var id = 0;
+               angular.forEach(keys, function(key) {
+                 if($scope.tu[key].email === user.thirdPartyUserData.email) {
+                    reg = true;
+                    id = key;
+                 } 
+
+                 
+                 //onsole.log(key, $scope.tu[key].email);
+              });
+              if(!reg) {
+                
+                  //TODO: automatically register user
+                 $scope.logout();
+                 $location.path("/signup");
+              } else {
+                //Get user
+                $scope.user = syncData(["users", id]);
+              }
+
+
+            }); 
+
+        });
+
       //online = false v logoutu! - http://stackoverflow.com/questions/15982215/firebase-count-online-users
       $scope.logout = function() {
        //  AuthService.setUserAuthenticated(false);

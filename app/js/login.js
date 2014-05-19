@@ -92,15 +92,7 @@ angular.module('login', ['ngResource'])
             // do login things
             //$scope.user = user;
             $scope.$apply;
-            console.log(user);
         })
-        $rootScope.$on("loginError", function(event, error) {
-            // tell the user about the error
-        })
-        $rootScope.$on("logout", function(event) {
-            // do logout things
-        })
-
       };
       $scope.loginG = function() {
 
