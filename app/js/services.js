@@ -100,6 +100,14 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
             });
             },
 
+            loginG: function() {
+              auth.$login('google', {
+              rememberMe: true,
+              scope: 'https://www.googleapis.com/auth/plus.login'
+            });
+            },
+
+
             logout: function() {
                assertAuth();
                auth.$logout();
