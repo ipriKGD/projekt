@@ -98,7 +98,7 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
 
       $scope.$on('$viewContentLoaded', function() {
         // $scope.user = AuthService.getAuthenticatedUser();
-        if($scope.auth.user != null && $scope.auth.user.provider !== "google") {
+        if($scope.auth.user != null && $scope.auth.user.provider !== "google" && $scope.auth.user.provider !== "facebook") {
           var id = parseInt($scope.auth.user.id);
           $scope.user =  syncData(['users', id-1]);
          // firebaseRef('users/'+$scope.user.id).update({online: true});
