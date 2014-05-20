@@ -19,11 +19,10 @@
  	<dt>Category:</dt>
     <dd ng-repeat="category in trade.article.category">{{category}}</dd>
   <dt>Posted by:</dt>
-		<!-- tu uporabi spremenljivko tradeUser.atribut_userja -->
     <dd>{{tradeUser.first_name}} {{tradeUser.last_name }}</dd>
-		<!-- če je trade mode == 1 ali 2, potem lahko uporabniku pošljemo mail -->
+		<!-- Ce je trade mode == 1 ali 2, potem lahko uporabniku posljemo mail -->
 		<dd ng-if="trade.mode == 2 || trade.mode == 1">{{ tradeUser.email }} </dd>
-		<!-- če je trade mode == 2, potem lahko uporabnika pokličemo po telefonu -->
+		<!-- Ce je trade mode == 2, potem lahko uporabnika poklicemo po telefonu -->
 		<dd ng-if="trade.mode == 2"> {{ tradeUser.phone }} </dd>
 		<br />
     <!-- TODO: naredi chat -->
