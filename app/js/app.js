@@ -93,8 +93,8 @@ myApp.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootSc
     };
 }]);
 */
-myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'AuthService', 'firebaseRef', '$rootScope',
- function($scope, loginService, syncData, $location, AuthService, firebaseRef, $rootScope) {
+myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location', 'firebaseRef', '$rootScope',
+ function($scope, loginService, syncData, $location, firebaseRef, $rootScope) {
 
       $scope.$on('$viewContentLoaded', function() {
         // $scope.user = AuthService.getAuthenticatedUser();
@@ -110,7 +110,7 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
             $scope.$apply;
             //find user by email
             //TODO: izboljsava - avtomatska registracija, ce ga se ni!
-            console.log(user.email);
+            console.log(user);
             $scope.tu = syncData('users');
             $scope.tu.$on("loaded", function() {
               var keys = $scope.tu.$getIndex();
@@ -127,12 +127,19 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
               });
               if(!reg) {
                 
-                  //TODO: automatically register user
-                 $scope.logout();
-                 $location.path("/signup");
+                 //automatically register user - create his account
+                 loginService.createProfile(keys.length, user.email, user.thirdPartyUserData.given_name, 
+                  user.thirdPartyUserData.family_name, "");
+                 $scope.user = syncData(["users", keys.length]);
+                 if(user.thirdPartyUserData.picture != null) {
+                    firebaseRef('users/'+keys.length).update({online: true, p_image: user.thirdPartyUserData.picture});
+                 } else {
+                  firebaseRef('users/'+keys.length).update({online: true});
+                 }
               } else {
                 //Get user
                 $scope.user = syncData(["users", id]);
+                firebaseRef('users/'+id).update({online: true});
               }
 
 
@@ -160,16 +167,25 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
                  
                  //onsole.log(key, $scope.tu[key].email);
               });
-              if(!reg) {
+              if(user.email != null) {
+                if(!reg) {
                 
-                  //TODO: automatically register user
-                 $scope.logout();
-                 $location.path("/signup");
+                  //automatically register user - create his account
+                 loginService.createProfile(keys.length, user.thirdPartyUserData.email, user.thirdPartyUserData.first_name, 
+                  user.thirdPartyUserData.last_name, "");
+                 $scope.user = syncData(["users", keys.length]);
+                firebaseRef('users/'+keys.length).update({online: true});
+                } else {
+                  //Get user
+                  $scope.user = syncData(["users", id]);
+                  firebaseRef('users/'+id).update({online: true});
+                }
+              
               } else {
-                //Get user
-                $scope.user = syncData(["users", id]);
+                $scope.logout();
+                alert("Please check your FB settings.");
+                $location.path("/trades;");
               }
-
 
             }); 
 

@@ -13,7 +13,8 @@
 			<dt>About:</dt>
 				<dd>{{user.about}}</dd>
 			<dt>Last seen:</dt>
-				<dd>{{user.last_active | date}}</dd>
+				<dd ng-if="!user.online">{{userU.last_active | date}}</dd>
+				<dd ng-if="user.online">Now</dd>
 		<!-- TODO (could have): seznam prijateljev-->
   		</dl>
 	</div>

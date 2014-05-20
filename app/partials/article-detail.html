@@ -26,9 +26,10 @@
 		<!-- če je trade mode == 2, potem lahko uporabnika pokličemo po telefonu -->
 		<dd ng-if="trade.mode == 2"> {{ tradeUser.phone }} </dd>
 		<br />
-		<a ng-if="tradeUser.online && tradeUser.id != user.id" href="#">Send message</a>
+    <!-- TODO: naredi chat -->
+		<!--<a ng-if="tradeUser.online && tradeUser.id != user.id" href="#">Send message</a> -->
+    <p ng-if="tradeUser.online && tradeUser.id != user.id" ><strong>User is online.</strong></p> 
     <p ng-if="!tradeUser.online && tradeUser.id != user.id"><strong>User is not online. </strong></p>
-		<!-- TODO: naredi chat -->
   	</li>
     <a class="btn btn-primary" ng-if="tradeUser.id == user.id && trade.active == 1" ng-click="closeTrade(trade.id)">Close trade</a>
 </ul>
