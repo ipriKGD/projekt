@@ -4,9 +4,8 @@
 /* Controllers */
 var socialTradeControllers = angular.module('socialTradeControllers', []);
 
-socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeService', 'syncData', 
-  function($scope, socialTradeService, syncData) {
-    //$scope.trades = socialTradeService.trades.query();
+socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'syncData', 
+  function($scope, syncData) {
     $scope.trades = syncData('trades');
     $scope.order = '-created';
     $scope.category_show = 'all';
@@ -14,15 +13,10 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'socialTradeServ
 
   }]);
 
-socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'socialTradeService', 'syncData', 'firebaseRef',
-  function($scope, $routeParams, socialTradeService, syncData, firebaseRef) {
-   //$scope.trade = socialTradeService.trades.get({tradeId: $routeParams.tradeId}, function(trade) {
-   // console.log('trades/'+$routeParams.tradeId);
+socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'syncData', 'firebaseRef',
+  function($scope, $routeParams, syncData, firebaseRef) {
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
-    $scope.mainImage = $scope.trade.article.image[0];
-    	//get needed values from trade object
-
-    
+    $scope.mainImage = $scope.trade.article.image[0];  
     
     $scope.setImage = function(image) {
       $scope.mainImage = image;
@@ -32,43 +26,18 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
       firebaseRef('trades/'+$scope.trade.id).update({active: 0});
 
     }
-
-    /*$scope.$watch('trade', function(oldValue, newValue) {
-		if (!newValue) {
-			$scope.tradeArticle = null;
-			$scope.tradeUser = null;
-			return;
-		}
-		newValue.$promise.then(function() {
-			/*$scope.tradeArticle = socialTradeService.articles.get({
-				articleId : $scope.trade.article_id
-			});
-      $scope.tradeArticle = syncData(['articles', $scope.trade.article_id]);
-		});
-		newValue.$promise.then(function() {
-			/*$scope.tradeUser = socialTradeService.users.get({
-				userId : $scope.trade.user_id
-			}); 
-      $scope.tradeUser = syncData(['users', $scope.trade.user_id]);
-		}); */
     $scope.tradeArticle = $scope.tradeArticle = syncData(['articles', $scope.trade.article_id]);
-    $scope.tradeUser = syncData(['users', $scope.trade.user_id]);
-		//bind trade pomeni, da dodas tisto v userja/article!!! PAZI!!
-    //bind user bi verjetno pomenil update!!! (torej daj bind na trade!!! !)
-	
+    $scope.tradeUser = syncData(['users', $scope.trade.user_id]);	
 }]);
 
-socialTradeControllers.controller('UserListCtrl', ['$scope', 'socialTradeService', 'syncData',
-  function($scope, socialTradeService, syncData) {
-    //$scope.users = socialTradeService.users.query();
+socialTradeControllers.controller('UserListCtrl', ['$scope', 'syncData',
+  function($scope, syncData) {
     $scope.users = syncData('users');
     $scope.order = 'last_name';
 
 }]);
-socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'socialTradeService', 'syncData',
-  function($scope, $routeParams, socialTradeService, syncData) {
-    //$scope.userU = socialTradeService.users.get({userId: $routeParams.userId});
-    //$scope.trades = socialTradeService.trades.query();
+socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'syncData',
+  function($scope, $routeParams, syncData) {
     $scope.userU = syncData(['users', $routeParams.userId]);
     $scope.trades = syncData('trades');
     $scope.order = '-created';
@@ -76,32 +45,14 @@ socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', '
     $scope.showfilter = "1";
   }]);
 
-socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService', '$location', 'firebaseRef',
-  function($scope, socialTradeService, $location, firebaseRef) {
-     // TODO: Update picture!!!
+socialTradeControllers.controller('UserEditCtrl', ['$scope', '$location', 'firebaseRef',
+  function($scope, $location, firebaseRef) {
+      // TODO: Upload picture!!!
       $scope.editProfile = function() {
-            if($scope.user.p_image.lenght== 0) $scope.user.p_image="";
+           if($scope.user.p_image.lenght== 0) $scope.user.p_image="";
            firebaseRef('users/'+$scope.user.id).update({p_image:$scope.user.p_image, username: $scope.user.username, phone: $scope.user.phone, about: $scope.user.about});
            $location.path('myprofile');
       };
 
 
 }]);
-
-
-/*V VSAK CONTROLLER JE POTREBNO INJECTAT $firebase service
- firebase lahko naredimo kot service - glej angularfire seed project
- ALI v kontrolerju: 
-          var messagesRef = new Firebase("https://feg3jk6f9bz.firebaseio-demo.com/");
-          $scope.messages = $firebase(messagesRef);
-          //dodajanje
-          $scope.addMessage = function(e) { //to je event na input submit ng-keydown="addmessage(...)"
-            if (e.keyCode != 13) return;
-            $scope.messages.$add({from: $scope.name, body: $scope.msg});
-            $scope.msg = "";
-            //modify data: messagesRef.update({name:'alex', age:35}) ali $add, $remove, $update
-
-            //kako deluje select? - morda kar v url dodas id? (sej itak za to imamo filterje!!!)
-          };
-
-*/

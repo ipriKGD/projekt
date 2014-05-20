@@ -1,24 +1,6 @@
 'use strict';
 
 /* Services */
-var socialTradeServices = angular.module('socialTradeServices', ['ngResource']);
- 
-socialTradeServices.factory('socialTradeService', ['$resource',
-	function($resource){
-		var service = {
-			trades : $resource('trades/:tradeId.json', {}, {
-				query: {method:'GET', params:{tradeId:'trades'}, isArray:true}
-			}),
-			users : $resource('users/:userId.json', {}, {
-				query: {method:'GET', params:{userId:'users'}, isArray:true}
-			}),
-			articles : $resource('articles/:articleId.json', {}, {
-				query: {method:'GET', params:{articleId:'articles'}, isArray:true}
-			})
-		};
-		return service;
-			
-	}]);
 
 //firebase
 var firebaseService = angular.module('firebaseService', ['firebase'])
@@ -98,11 +80,9 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
               rememberMe: true,
               scope: 'email,user_likes'
             }).then(function(user){
-              //console.log(user);
-             $rootScope.$emit("fblogin", user);
+              $rootScope.$emit("fblogin", user);
             });
             
-              //pridobi podatke
             },
             loginG: function() {
 
@@ -112,9 +92,7 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
 
             }).then(function(user){
               $rootScope.$emit("glogin", user);
-
             });
-
             },
 
             logout: function() {
@@ -173,19 +151,3 @@ var loginService = angular.module('loginServices', ['firebase', 'firebaseService
          }
       }
    }]);
-
-  var fblogin = angular.module('fblogin', ['firebase', 'firebaseService'])
-    .service('fbloginservice', ["$rootScope", function($rootScope) {
-    var ref = new Firebase("https://socialtrade.firebaseio.com");
-    this.auth = new FirebaseSimpleLogin(ref, function(error, user) {
-        if (user) {
-            $rootScope.$emit("login", user);
-        }
-        else if (error) {
-            $rootScope.$emit("loginError", error);
-        }
-        else {
-            $rootScope.$emit("logout");
-        }   
-    });
-}]);
