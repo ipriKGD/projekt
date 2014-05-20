@@ -12,7 +12,8 @@
 			<dt>About:</dt>
 				<dd>{{userU.about}}</dd>
 			<dt>Last seen:</dt>
-				<dd>{{userU.last_active | date}}</dd>
+				<dd ng-if="!userU.online">{{userU.last_active | date}}</dd>
+				<dd ng-if="userU.online">Now</dd>
 		<!-- TODO (could have): seznam prijateljev-->
 		<!-- seznam stvari na prodaj-->
 			<dt> User's active trades:</dt><br>
