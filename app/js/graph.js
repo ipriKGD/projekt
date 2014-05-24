@@ -38,8 +38,7 @@ angular.module('graph', ['ngResource'])
 				var data = scope[attrs.ngModel]; 
 				scope.$watch('graphdata', function(v){
  				 if(!chart) {
- 				 	 $("chart").show();
- 				 	 $("chart").hide();
+
 					 chart= $.plot(elem, v, options);
 					 elem.show();
 				} else  {
@@ -47,6 +46,15 @@ angular.module('graph', ['ngResource'])
 					chart.setupGrid();
 					chart.draw();
 				}
+				//repair text positioning around graph axis
+				$("div.tickLabel").each(function(i,ele) {
+				    ele = $(ele);
+				    if (ele.css("text-align") == "center") { //x-axis
+				        ele.css("left", ele.position().left - 5); //move them up over graph
+				    } else {  //y-axis
+				        ele.css("left", ele.position().left - 10); //move them right over graph
+				    }
+				});
 			});
 		 }
 	  };
