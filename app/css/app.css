@@ -85,7 +85,7 @@ img.detail {
    visibility: hidden;
 }
 chart{
-    display:none;
-    width:400px;
-    height:200px;
+    display:block;
+    width:700px;
+    height:400px;
 }
