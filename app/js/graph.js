@@ -38,6 +38,8 @@ angular.module('graph', ['ngResource'])
 				var data = scope[attrs.ngModel]; 
 				scope.$watch('graphdata', function(v){
  				 if(!chart) {
+ 				 	 $("chart").show();
+ 				 	 $("chart").hide();
 					 chart= $.plot(elem, v, options);
 					 elem.show();
 				} else  {
