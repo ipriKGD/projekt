@@ -87,6 +87,26 @@ socialTradeControllers.controller('UserEditCtrl', ['$scope', 'socialTradeService
 
 }]);
 
+socialTradeControllers.controller('graphController', function($scope) {
+    
+    var ref = new Firebase("https://socialtrade.firebaseio.com/trades/");
+    var data= new Array();
+    var counter= 0;
+    ref.once('value', function(snapshot) {
+        snapshot.forEach(function(trades) {
+            var trade= trades.val();
+            
+            data[counter]= new Array();
+            data[counter][0]= trade['created'].substring(5, 10);
+            data[counter][1]= ++counter;
+            
+        });
+        $scope.data= data;
+    });
+    
+    
+});
+
 
 /*V VSAK CONTROLLER JE POTREBNO INJECTAT $firebase service
  firebase lahko naredimo kot service - glej angularfire seed project
