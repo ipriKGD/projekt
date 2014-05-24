@@ -45,6 +45,7 @@ socialTradeControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', '
     $scope.showfilter = "1";
   }]);
 
+
 socialTradeControllers.controller('UserEditCtrl', ['$scope', '$location', 'firebaseRef',
   function($scope, $location, firebaseRef) {
       // TODO: Upload picture!!!

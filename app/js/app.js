@@ -16,7 +16,8 @@ var myApp = angular.module('myApp', [
   'firebaseService',
   'loginServices',
   'waitForAuth',
-  'routeSecurity'
+  'routeSecurity',
+  'graph'
 ]);
 
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -30,6 +31,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/users", {templateUrl: "partials/user-list.html", controller: "UserListCtrl", authRequired: true });
   $routeProvider.when("/users/:userId", {templateUrl: "partials/user-view.html", controller: "UserDetailCtrl", authRequired: true });
   $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", authRequired: true });
+  $routeProvider.when("/graph", {templateUrl: "partials/graph.html"});
   $routeProvider.otherwise({redirectTo: '/trades'});
 }]).constant('FBURL', 'https://socialtrade.firebaseio.com').constant('loginRedirectPath', '/login')
 ;
