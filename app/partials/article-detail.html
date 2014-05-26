@@ -35,3 +35,8 @@
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
 <input type="hidden" value="{{trade.article.id}}" id="aid"/>
 </div>
+<dir-disqus disqus-shortname='socialtrade'
+            disqus-identifier="{{ trade.article.id }}"
+            disqus-url="{{ url }}"
+            ready-to-bind="{{ contentLoaded }}">
+</dir-disqus>

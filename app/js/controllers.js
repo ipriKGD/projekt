@@ -15,7 +15,14 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'syncData',
 
 socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'syncData', 'firebaseRef',
   function($scope, $routeParams, syncData, firebaseRef) {
+    $scope.contentLoaded = false;
+    $scope.url = 'http://localhost:8000/app/index.html#/trades/'
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
+    $scope.trade.$on("loaded", function(){
+      $scope.url += $scope.trade.article.id;
+      console.log($scope.url);
+      $scope.contentLoaded = true;
+    })
     $scope.mainImage = $scope.trade.article.image[0];  
     
     $scope.setImage = function(image) {

@@ -20,7 +20,7 @@ var myApp = angular.module('myApp', [
   'graph'
 ]);
 
-myApp.config(['$routeProvider', function($routeProvider) {
+myApp.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
   $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', authRequired: true});
   $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl"});
@@ -33,6 +33,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/newtrade", {templateUrl: "partials/addlisting-view.html", controller: "AddListingCtrl", authRequired: true });
   $routeProvider.when("/graph", {templateUrl: "partials/graph.html", authRequired: true});
   $routeProvider.otherwise({redirectTo: '/trades'});
+
+
 }]).constant('FBURL', 'https://socialtrade.firebaseio.com').constant('loginRedirectPath', '/login')
 ;
 
