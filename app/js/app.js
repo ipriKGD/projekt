@@ -35,6 +35,7 @@ myApp.config(['$routeProvider','$locationProvider', function($routeProvider, $lo
   $routeProvider.otherwise({redirectTo: '/trades'});
 
 
+  
 }]).constant('FBURL', 'https://socialtrade.firebaseio.com').constant('loginRedirectPath', '/login')
 ;
 
