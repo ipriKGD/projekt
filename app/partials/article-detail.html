@@ -33,4 +33,5 @@
     <a class="btn btn-primary" ng-if="tradeUser.id == user.id && trade.active == 1" ng-click="closeTrade(trade.id)">Close trade</a>
 </ul>
 <p ng-if="trade.active==0"> <b> Trade is closed. </b></p>
+<input type="hidden" value="{{trade.article.id}}" id="aid"/>
 </div>

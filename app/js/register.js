@@ -25,20 +25,24 @@ angular.module('register', ['ngResource'])
 
       $scope.createAccount = function() {
          $scope.err = null;
-         if( assertValidLoginAttempt() ) {
-            loginService.createAccount($scope.email, $scope.pass, function(err, user) {
-               if( err ) {
-                  $scope.err = err? err + '' : null;
-               }
-               else {
-                  // must be logged in before I can write to my profile
-                  $scope.login(function() {
-                     var id = parseInt(user.id);
-                     loginService.createProfile(id-1, user.email, $scope.first_name, $scope.last_name, $scope.phone);
-                     $location.path('/trades');
-                  });
-               }
-            });
+         if($scope.phone == null || $scope.first_name == null || $scope.last_name == null) {
+            $scope.err = "Please, enter all data!"
+         } else {
+            if( assertValidLoginAttempt() ) {
+               loginService.createAccount($scope.email, $scope.pass, function(err, user) {
+                  if( err ) {
+                     $scope.err = err? err + '' : null;
+                  }
+                  else {
+                     // must be logged in before I can write to my profile
+                     $scope.login(function() {
+                        var id = parseInt(user.id);
+                        loginService.createProfile(id-1, user.email, $scope.first_name, $scope.last_name, $scope.phone);
+                        $location.path('/trades');
+                     });
+                  }
+               });
+            }
          }
       };
 
