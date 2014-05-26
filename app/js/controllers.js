@@ -16,7 +16,8 @@ socialTradeControllers.controller('ArticleListCtrl', ['$scope', 'syncData',
 socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'syncData', 'firebaseRef',
   function($scope, $routeParams, syncData, firebaseRef) {
     $scope.contentLoaded = false;
-    $scope.url = 'http://localhost:8000/app/index.html#/trades/'
+    //$scope.url = 'http://localhost:8000/app/index.html#/trades/'
+    $scope.url = 'http://secure-stream-6699.herokuapp.com/app/index.html#/trades/'
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
     $scope.trade.$on("loaded", function(){
       $scope.url += $scope.trade.article.id;
