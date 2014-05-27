@@ -17,11 +17,11 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
   function($scope, $routeParams, syncData, firebaseRef) {
     $scope.contentLoaded = false;
     //$scope.url = 'http://localhost:8000/app/index.html#/trades/'
-    $scope.url = 'http://secure-stream-6699.herokuapp.com/app/index.html#/trades/'
+    $scope.url = 'http://secure-stream-6699.herokuapp.com/#!/trades/'
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
     $scope.trade.$on("loaded", function(){
       $scope.url += $scope.trade.article.id;
-      console.log($scope.url);
+      //alert($scope.url);
       $scope.contentLoaded = true;
     })
     $scope.mainImage = $scope.trade.article.image[0];  

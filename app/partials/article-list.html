@@ -13,7 +13,7 @@
 				</select>
 			</li>			
 			</ul>
-			<a class="btn btn-primary pull-right" ng-show-auth='login' href="#/newtrade">New Trade</a>
+			<a class="btn btn-primary pull-right" ng-show-auth='login' href="#!/newtrade">New Trade</a>
 		</div>		
 
      	<div class="span2">
@@ -37,8 +37,8 @@
       <div class="span10">
 			<ul>
     			<li ng-if="trade.active!=0 && (trade.article.category.indexOf(category_show) > -1 || category_show === 'all')" ng-repeat="trade in trades | orderByPriority | filter: query | orderBy:order" class="thumbnail trade-listing">
-					<div class="img-container"><a href="#/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
-      				<a href="#/trades/{{trade.id}}">{{trade.article.title}}</a>
+					<div class="img-container"><a href="#!/trades/{{trade.id}}" class="thumb"><img ng-src="{{trade.article.image[0]}}" class="slika_seznam"></a></div>
+      				<a href="#!/trades/{{trade.id}}">{{trade.article.title}}</a>
       				<p >{{trade.article.description.substring(0,200)}}...</p>
       				<p>{{trade.article.price}} €</p>
 					<p>Created: {{ trade.created | date }}</p>  

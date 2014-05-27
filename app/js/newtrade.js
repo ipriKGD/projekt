@@ -6,9 +6,9 @@ angular.module('newtrade', ['ngResource'])
         // TODO: slika - nalaganje
         $scope.category="art";
         $scope.image="";
-        console.log($scope.user.phone);
+        //console.log($scope.user.phone);
         if($scope.user.phone == null || $scope.user.phone == "") {
-          console.log("NI PHONE!")
+          //console.log("NI PHONE!")
           $("#modesel").attr("checked", "checked");
           $("#modesel").attr("disabled", true);
           $("#modesel").attr("title", "Enter your phone number in your profile in order to enable this mode");
