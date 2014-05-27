@@ -21,6 +21,7 @@ var myApp = angular.module('myApp', [
 ]);
 
 myApp.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.hashPrefix('!');
   $routeProvider.when('/trades', {templateUrl: 'partials/article-list.html', controller: 'ArticleListCtrl' });
   $routeProvider.when('/trades/:tradeId', {templateUrl: 'partials/article-detail.html', controller: 'ArticleDetailCtrl', authRequired: true});
   $routeProvider.when('/login', {templateUrl: "partials/login.tpl.html", controller: "LoginCtrl"});

@@ -6,7 +6,7 @@
     <ul class="nav nav-list">
 
     <li ng-repeat="user in users | orderByPriority | filter:query | orderBy : order">
-    	<a href="#/users/{{user.id}}" class="thumbnail">
+    	<a href="#!/users/{{user.id}}" class="thumbnail">
     		<div id="{{user.id}}">	    	
 	    		<!--<img ng-src="{{user.p_image}}">-->
 	    		<span>{{user.first_name + " " + user.last_name}}</span>
