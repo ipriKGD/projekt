@@ -21,7 +21,7 @@ socialTradeControllers.controller('ArticleDetailCtrl', ['$scope', '$routeParams'
     $scope.trade = syncData(['trades', $routeParams.tradeId]);
     $scope.trade.$on("loaded", function(){
       $scope.url += $scope.trade.article.id;
-      alert($scope.url);
+      //alert($scope.url);
       $scope.contentLoaded = true;
     })
     $scope.mainImage = $scope.trade.article.image[0];  
