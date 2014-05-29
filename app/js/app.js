@@ -94,6 +94,7 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
             // do login things
             $scope.$apply;
             //find user by email
+            console.log(user)
             $scope.tu = syncData('users');
             $scope.tu.$on("loaded", function() {
               var keys = $scope.tu.$getIndex();
@@ -105,7 +106,7 @@ myApp.controller('MainCtrl', ['$scope', 'loginService', 'syncData', '$location',
                     id = key;
                  } 
               });
-              if(user.email != null) {
+              if(user.thirdPartyUserData.email != null) {
                 if(!reg) {
                   //automatically register user - create his account
                   loginService.createProfile(keys.length, user.thirdPartyUserData.email, user.thirdPartyUserData.first_name, 
